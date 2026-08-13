@@ -31,9 +31,13 @@ $43 per inverter. This pair repeats for every Sol-Ark on site regardless of how 
 you parallel — SolarAssistant's Sol-Ark 15K-2P documentation states that *"for parallel
 inverters and 3 phase installations each inverter requires its own cable."*
 
-The splitter is needed on any inverter whose CAN pins are already carrying a battery
-BMS link — which is the normal case for a Sol-Ark paired with Pytes. See
-[00 — Overview](00-overview.md) for why.
+**Order one splitter per inverter, including the slaves.** Only the master's CAN pins
+carry a battery BMS link — the slaves learn battery state over the inverter-to-inverter
+parallel link, so a slave's splitter has an empty CAN leg. Order it anyway: one per
+inverter is what SolarAssistant's documentation specifies and what is verified working on
+a live site. See [00 — Overview](00-overview.md) for the topology and
+[02 — Wiring the Sol-Ark](02-wiring-solark.md#step-2--fit-the-splitter) for what goes on
+each leg.
 
 ### Per Pytes V5 stack — 1 ×
 
