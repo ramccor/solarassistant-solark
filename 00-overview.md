@@ -4,7 +4,7 @@
 
 ## The problem this wiring solves
 
-Sol-Ark 15K inverters expose a single RJ45 **2-in-1 BMS port** that carries two
+Sol-Ark 15K inverters expose a **2-in-1 BMS port** — one RJ45 socket carrying two
 independent buses on different pins:
 
 | Pins | Bus | Used by |
@@ -21,6 +21,11 @@ other carrying pins 4–5.
 In a Sol-Ark + Pytes system the battery link normally runs on **CAN**, which you
 confirm on the inverter as `Lithium protocol: CAN (protocol 0)`. The CAN pins are
 therefore occupied and the RS485 pins are free for SolarAssistant.
+
+> **The 2-in-1 port is the jack silkscreened `Battery CANBus`** — the right-hand one of
+> four RJ45 jacks in the wiring compartment. The jack labelled `Modbus RS485` is a
+> different bus and is **not** the one to use, despite the name.
+> [Page 02](02-wiring-solark.md#finding-the-right-socket) identifies all four.
 
 Source: [SolarAssistant — 1 in 2 BMS port](https://solar-assistant.io/help/inverters/deye/SG01LP1/2-in-1-bms-port).
 
@@ -49,36 +54,39 @@ its own master.
 ## Topology
 
 ```
-                        ┌────────────────────────────┐
-                        │  SolarAssistant device     │
-                        │  (Raspberry Pi 5, 4x USB)  │
-                        └──┬────────┬────────┬───┬───┘
-                           │        │        │   │
-                    RS485 ─┘  RS485 ┘        │   └─ spare
-                      │         │            │
-                      │         │      RS232 console
-                      │         │            │
-        ┌─────────────┴──┐  ┌───┴───────────┐│
-        │ Sol-Ark 15K #1 │  │ Sol-Ark 15K #N││
-        │ 2-in-1 BMS port│  │ 2-in-1 BMS port││
-        │  └─ splitter   │  │  └─ splitter  ││
-        │     ├ pins 1-3 ┘  │     ├ pins 1-3┘│
-        │     └ pins 4-5 ┐  │     └ pins 4-5┐│
-        └────────────────│──┘───────────────││
-                     CAN │                CAN││
-                         ▼                  ▼▼
+                    ┌────────────────────────────────┐
+                    │  SolarAssistant device         │
+                    │  (Raspberry Pi 5, 4x USB)      │
+                    └────┬────────┬────────────┬─────┘
+                         │        │            │
+                       RS485    RS485    RS232 console
+                         │        │            │
+              ┌──────────┴───┐ ┌──┴─────────┐  │
+              │ Sol-Ark #1   │ │ Sol-Ark #N │  │
+              │ MASTER       ├─┤ SLAVE      │  │
+              │ splitter on  │ │ splitter on│  │
+              │ Battery      │ │ Battery    │  │
+              │ CANBus jack  │ │ CANBus jack│  │
+              └──────┬───────┘ └────────────┘  │
+                     │ CAN — master only       │
+                     ▼                         ▼
               ┌──────────────────────────────────────┐
               │  Pytes V5 stack                      │
               │  master pack (console port)          │
               │  + chained packs                     │
               └──────────────────────────────────────┘
 
-  The inverter-to-inverter parallel CAN link runs separately between the
-  Sol-Arks for load sharing. It carries no SolarAssistant data — leave it alone.
+  The ├─┤ between the inverters is the parallel link. It carries load sharing,
+  master/slave arbitration, and battery state to the slaves — but no
+  SolarAssistant data. Leave it alone.
 ```
 
-Each inverter contributes one RS485 leg to the Pi. Each battery stack contributes one
-console leg. The CAN legs go to the battery and never to the Pi.
+Each inverter contributes one RS485 leg to the Pi and gets its own splitter. Each battery
+stack contributes one console leg.
+
+**Only the master's CAN leg is connected to the battery.** The slaves learn battery state
+across the parallel link instead, so their splitters' CAN sockets stay empty. CAN never
+reaches the Pi on any inverter.
 
 > **Port limit.** The Pi 5 has four USB ports, and three inverters plus one battery
 > stack fills all four. Any site with **more than 3 inverters requires a separate

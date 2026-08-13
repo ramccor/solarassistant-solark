@@ -692,18 +692,19 @@ section::after {
              │       │       │
       ┌──────┴──┐ ┌──┴──────┐│
       │ Sol-Ark │ │ Sol-Ark ││
-      │   #1    │ │   #N    ││
+      │ MASTER  ├─┤  SLAVE  ││
       │ splitter│ │ splitter││
-      └────┬────┘ └────┬────┘│
-           │  CAN      │ CAN │
-           └─────┬─────┘     │
-                 ▼           ▼
+      └────┬────┘ └─────────┘│
+           │ CAN             │
+           │ (master only)   │
+           ▼                 ▼
           ┌──────────────────────────┐
           │  Pytes V5 stack          │
           │  master + chained packs  │
           └──────────────────────────┘
 </code></pre>
-<p>Each inverter = one RS485 leg. Each stack = one console leg. CAN never reaches the Pi.</p>
+<p>Each inverter = one RS485 leg and its own splitter. <strong>Only the master's CAN leg reaches the<br />
+battery</strong>; slaves get battery state over the parallel link. CAN never reaches the Pi.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
@@ -1930,8 +1931,8 @@ section::after {
                                 └──► new USB-RS485 cable to the Pi
 </code></pre>
 <p><strong>Only the master's CAN leg is used.</strong> Slaves get battery state over the parallel link, so<br />
-a slave's jack is empty to begin with. Fit the splitter anyway — identical wiring<br />
-everywhere, and RS485 can never share a socket with CAN.</p>
+a slave's jack is empty to begin with. <strong>Every inverter still gets its own splitter</strong> — per<br />
+SolarAssistant's documentation, and verified working on a live site.</p>
 <div class="warn">
 <p><strong>Never use a passive Y-splitter.</strong> It passes all 8 pins to both sockets, putting RS485 on the battery leg — which breaks SolarAssistant's ability to read the inverter.</p>
 </div>

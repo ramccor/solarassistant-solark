@@ -82,11 +82,12 @@ Only the master talks to the battery stack over CAN; the slaves receive battery 
 across the inverter-to-inverter parallel link instead. A slave's `Battery CANBus` jack is
 therefore empty before you start, and its splitter's CAN leg stays empty afterwards.
 
-> **Why fit a splitter on a slave at all?** Strictly you could plug the RS485 cable
-> straight into an empty `Battery CANBus` jack. Fitting the splitter everywhere is a
-> deliberate choice: every inverter is wired identically, and the RS485 cable can never
-> end up sharing a socket with CAN. It costs one part per slave and removes a class of
-> mistake — worth it on a site that anyone else will ever maintain.
+> **A slave still gets its own splitter.** One splitter per inverter is what
+> SolarAssistant's own documentation specifies, and it is the configuration verified
+> working on a live two-inverter site — see [07 — Worked example](07-worked-example.md).
+> It also means every inverter is wired identically and the RS485 cable can never end up
+> sharing a socket with CAN. Do not economise here: an untested variation on a comms
+> topology is a poor trade for the price of one adapter.
 
 ```
   Battery CANBus jack

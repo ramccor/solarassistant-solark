@@ -145,19 +145,20 @@ Everything about the parts list follows from this asymmetry.
              │       │       │
       ┌──────┴──┐ ┌──┴──────┐│
       │ Sol-Ark │ │ Sol-Ark ││
-      │   #1    │ │   #N    ││
+      │ MASTER  ├─┤  SLAVE  ││
       │ splitter│ │ splitter││
-      └────┬────┘ └────┬────┘│
-           │  CAN      │ CAN │
-           └─────┬─────┘     │
-                 ▼           ▼
+      └────┬────┘ └─────────┘│
+           │ CAN             │
+           │ (master only)   │
+           ▼                 ▼
           ┌──────────────────────────┐
           │  Pytes V5 stack          │
           │  master + chained packs  │
           └──────────────────────────┘
 ```
 
-Each inverter = one RS485 leg. Each stack = one console leg. CAN never reaches the Pi.
+Each inverter = one RS485 leg and its own splitter. **Only the master's CAN leg reaches the
+battery**; slaves get battery state over the parallel link. CAN never reaches the Pi.
 
 ---
 
@@ -306,8 +307,8 @@ Check **every** inverter, not just the master — a swapped or re-flashed unit m
 ```
 
 **Only the master's CAN leg is used.** Slaves get battery state over the parallel link, so
-a slave's jack is empty to begin with. Fit the splitter anyway — identical wiring
-everywhere, and RS485 can never share a socket with CAN.
+a slave's jack is empty to begin with. **Every inverter still gets its own splitter** — per
+SolarAssistant's documentation, and verified working on a live site.
 
 <div class="warn">
 
