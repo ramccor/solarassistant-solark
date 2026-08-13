@@ -769,4 +769,4 @@ Look adjustable; already correct on a working install.
 
 <br>
 
-Full written guide: `docs/README.md` — pages 00 through 07
+Full written guide: `README.md` — pages 00 through 08

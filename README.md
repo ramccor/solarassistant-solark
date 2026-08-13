@@ -82,4 +82,4 @@ look like. Identifying values — hostname, site owner, serial numbers, IP addre
 WiFi SSID, site location — appear as `[REDACTED]` in every image and on
 [page 07](07-worked-example.md).
 
-**The complete guide, pages 00–07, is safe to distribute as-is.**
+**The complete guide, pages 00–08, is safe to distribute as-is.**
