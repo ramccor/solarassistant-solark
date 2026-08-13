@@ -204,4 +204,4 @@ install:
 
 ---
 
-[Index](README.md)
+Next: [09 — Sol-Ark ↔ SolarAssistant terminology](09-terminology-mapping.md)

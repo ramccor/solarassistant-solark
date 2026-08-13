@@ -22,6 +22,7 @@ enclosure — read [00-overview](00-overview.md) first.
 | 06 | [Troubleshooting](06-troubleshooting.md) | Symptom-to-cause table |
 | 07 | [Worked example](07-worked-example.md) | A complete as-built two-inverter, twelve-pack site |
 | 08 | [Recommended settings](08-recommended-settings.md) | Optional post-install changes: MQTT/Home Assistant, battery capacity fallback, PV forecast |
+| 09 | [Sol-Ark ↔ SolarAssistant terminology](09-terminology-mapping.md) | What each MySolArk field is called in SolarAssistant, and where the two disagree |
 
 ## Presentation deck
 
@@ -82,4 +83,4 @@ look like. Identifying values — hostname, site owner, serial numbers, IP addre
 WiFi SSID, site location — appear as `[REDACTED]` in every image and on
 [page 07](07-worked-example.md).
 
-**The complete guide, pages 00–08, is safe to distribute as-is.**
+**The complete guide, pages 00–09, is safe to distribute as-is.**

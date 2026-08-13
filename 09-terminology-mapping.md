@@ -1,0 +1,148 @@
+# 09 — Sol-Ark ↔ SolarAssistant terminology
+
+[Index](README.md) · Prev: [08 — Recommended settings](08-recommended-settings.md)
+
+The two products name the same inverter registers differently. An installer commissioning
+a site will have both open — the MySolArk app to change a setting, SolarAssistant to see
+whether the change landed — and the labels rarely match.
+
+This page maps one to the other. It is a naming reference, not a settings recommendation:
+for the values at a real site see [07 — Worked example](07-worked-example.md), and for
+which settings are worth changing see [08 — Recommended settings](08-recommended-settings.md).
+
+> **Labels drift between app versions.** These were captured from the MySolArk app in
+> August 2026. Sol-Ark renames fields between releases; the *registers* are stable, the
+> *labels* are not. If a name below is not on your screen, match by position and range
+> rather than assuming the setting is missing.
+
+## The two that catch people out
+
+| MySolArk | SolarAssistant | Why it matters |
+|----------|----------------|----------------|
+| **Limited power to Load** | **Zero export to load** | The same work mode under two unrelated names. Nothing in either string suggests the other |
+| **Grid Start %** | **Start grid charge capacity** | On a site whose generator feeds the grid input, this is the setting that actually starts charging — not the generator settings. See [the charge-path note](#a-note-on-generator-settings) |
+
+## Battery Setting
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| Batt Type → `Lithium Batt` | Battery → Type → `Lithium` |
+| BMS Lithium Batt Mode (0–20) | Battery → Lithium protocol — `0` is CAN |
+| Battery Capacity (0–9999 Ah) | Battery → Capacity |
+| Max A Charge (0–275 A) | Charging → Max charge current |
+| Max A Discharge (0–275 A) | Charging → Max discharge current |
+| Batt Shutdown % | Work mode → Output shutdown capacity |
+| Batt Low % | Work mode → Stop battery discharge capacity |
+| Batt Restart % | Work mode → Start battery discharge capacity |
+| Grid Charge | Work mode → Grid charge |
+| Grid Start % (10–90%) | Work mode → Start grid charge capacity |
+| Grid Start A (0–275 A) | Charging → Max grid charge current |
+| Gen Charge | Charging → Generator charge |
+
+`Batt Empty V`, `Batt Resistance`, `Batt charging efficiency`, `Activate Battery`,
+`Grid Signal`, `Gen Signal`, `Gen Force`, and `Low Noise Mode` have no SolarAssistant
+equivalent — SolarAssistant does not surface them.
+
+## Grid Settings
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| Grid Frequency (`50HZ` / `60HZ`) | Grid → Frequency |
+| Grid Type → `120/240V Split Phase` | Grid → Type → `120/240 V two phase` |
+| Normal Connect → Low / High voltage | Grid → Voltage limits |
+| Normal Connect → Low / High frequency | Grid → Frequency limits |
+
+Everything else on this screen — `Grid Mode`, `INV Output voltage`, the whole
+*Reconnect After Trip* block, `Reconnection Time`, `PF`, and the `HV1`–`HV3` / `LV1`–`LV3` /
+`HF1`–`HF3` / `LF1`–`LF3` trip points with their `-T` timers — is grid-protection
+configuration that SolarAssistant does not read or display. Change it in MySolArk only.
+
+## System Work Mode
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| Work Mode → `Limited power to Load` | Work mode → Mode → `Zero export to load` |
+| Max Solar Power (W) | Work mode → Max solar power |
+| Max Sell Power (W) | Work mode → Max sell power |
+| Energy pattern → `Batt First` | Work mode → Energy pattern → `Battery first` |
+| Time Of Use | Work mode → Use timer — **see below** |
+
+`Solar sell` and `Zero export power` have no SolarAssistant equivalent.
+
+MySolArk offers two further work modes, `Grid Selling` and `Limited to Home`. Their
+SolarAssistant names are **not mapped here** — only the mode a site is actually running can
+be confirmed by comparing the two screens, and guessing at the others would defeat the
+point of this page. Set the mode in MySolArk, then read back what SolarAssistant calls it.
+
+## SmartLoad
+
+The screen name gives no hint that it holds the generator wiring configuration.
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| SmartLoad Setup → `Generator Input` | Auxiliary → Aux port → `Generator input` |
+| GEN connect to Grid input | Auxiliary → Generator connected to grid input |
+
+`AC couple on load side` / `AC couple on grid side` have no SolarAssistant equivalent.
+
+## Advanced Setting
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| Grid peak-shaving + Grid peak-shaving power | Grid → Peak shaving |
+| Equipment mode (`Master` / `Slave`) | Parallel role |
+| Modbus SN (1–16) | Modbus № |
+
+> **This is where the numbering gotcha becomes visible from both sides.** MySolArk shows
+> each inverter's own `Equipment mode` and `Modbus SN`; SolarAssistant numbers its device
+> list independently. The two do not correspond — see
+> [00 — Overview](00-overview.md) and the worked example in
+> [07](07-worked-example.md#inverters).
+
+## Where the two disagree
+
+**`Time Of Use` vs `Use timer`.** MySolArk is authoritative for its own hardware. A site
+whose inverter reports Time Of Use **off** can still have SolarAssistant render
+`Use timer` as **checked**. The numeric registers agree exactly — it is this boolean that
+is misreported, and it appears to be a driver bug rather than a configuration problem.
+
+Check MySolArk before concluding that a work-mode timer is active. If SolarAssistant shows
+`Use timer` checked and MySolArk shows Time Of Use off, believe MySolArk.
+
+## A note on generator settings
+
+On a site where the generator feeds the **grid input** (`GEN connect to Grid input`
+enabled, `Grid Charge` enabled), the inverter treats a running generator as grid. Both the
+trigger and the current limit therefore come from the **grid** fields:
+
+| What you are trying to set | The field that actually does it |
+|----------------------------|---------------------------------|
+| SOC at which generator charging starts | `Grid Start %` |
+| Charge current drawn from the generator | `Grid Start A` |
+
+**There is no stop setting to find.** `Grid Charge` → `Grid Start %` → `Grid Start A` is
+the entire grid-charge group; no `Grid Stop %` exists. Charging ends on **current taper,
+not an SOC setpoint** — the manual puts generator charging as continuing "until the battery
+bank accepts 5% of its rated capacity in Amperes," which it equates to roughly 95% SOC.
+On a 1200 Ah bank that is about 60 A of acceptance.
+
+> Note that the manual states this for charging **from a generator**. Where the generator
+> feeds the grid input, charging runs through the grid path, and whether the identical
+> taper rule applies there is not documented. Treat ~95% as indicative. The practical
+> consequence is the same either way: an alert or automation that waits for 100% while on
+> generator power will never fire.
+
+The generator-specific settings are inert on such a site. SolarAssistant will still report
+a `Max generator charge current` and generator start/stop capacities, and they will still
+hold whatever values they were commissioned with — but nothing reads them while charging
+runs through the grid path. **Lowering a generator charge-current limit to throttle a
+generator does nothing; change `Grid Start A` instead.**
+
+This is also why the table above has no row for `Max generator charge current`. With
+`Gen Charge` toggled **off**, MySolArk hides its dependent generator-charge fields, so
+there is no visible Sol-Ark label to map onto it. Enabling `Gen Charge` to reveal them is
+a real configuration change — it adds a second charging path — not a display toggle.
+
+---
+
+[Index](README.md)
