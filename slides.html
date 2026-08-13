@@ -5548,17 +5548,19 @@ section::after {
 <td>Numbering follows USB enumeration order</td>
 </tr>
 <tr>
-<td>Grid reads 0 W, 0 Hz, ~0 V</td>
-<td><strong>Normal on an off-grid site</strong> — the grid input is simply absent</td>
-</tr>
-<tr>
 <td>Small differences between inverters</td>
 <td><strong>Desirable</strong> — proof of independent reads</td>
 </tr>
 </tbody>
 </table>
+<div class="warn">
+<p><strong>Grid reads 0 W, 0 Hz, ~0 V — this one depends on the site.</strong> Off-grid: the <strong>normal<br />
+steady state</strong>, grid input simply absent. Grid-tied: a <strong>real fault</strong> — outage, open<br />
+disconnect, tripped breaker. <strong>The reading is identical either way.</strong></p>
+</div>
 <div class="note">
-<p>On an off-grid installation, grid-absent is the <strong>expected steady state</strong>, not an alarm. Don't treat it as a fault, and don't let it mask a real comms problem elsewhere.</p>
+<p>In both cases SolarAssistant is reporting the inverter correctly. A grid-tied fault is<br />
+upstream — don't chase it through cables, drivers, or USB ports.</p>
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-class="lead" data-theme="default" data-style="section {

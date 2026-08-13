@@ -628,12 +628,20 @@ If battery comms degrade after any maintenance visit — **check what's physical
 | Observation | Why it's fine |
 |-------------|---------------|
 | SolarAssistant "Inverter 1" is the parallel slave | Numbering follows USB enumeration order |
-| Grid reads 0 W, 0 Hz, ~0 V | **Normal on an off-grid site** — the grid input is simply absent |
 | Small differences between inverters | **Desirable** — proof of independent reads |
+
+<div class="warn">
+
+**Grid reads 0 W, 0 Hz, ~0 V — this one depends on the site.** Off-grid: the **normal
+steady state**, grid input simply absent. Grid-tied: a **real fault** — outage, open
+disconnect, tripped breaker. **The reading is identical either way.**
+
+</div>
 
 <div class="note">
 
-On an off-grid installation, grid-absent is the **expected steady state**, not an alarm. Don't treat it as a fault, and don't let it mask a real comms problem elsewhere.
+In both cases SolarAssistant is reporting the inverter correctly. A grid-tied fault is
+upstream — don't chase it through cables, drivers, or USB ports.
 
 </div>
 
