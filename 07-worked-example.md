@@ -146,7 +146,7 @@ Conditions when the screenshots were taken, for context when reading them:
 fault or an outage. The grid-related inverter settings recorded above (voltage and
 frequency limits, grid charge, peak shaving) are still present in the inverter's
 configuration, but the grid input is not normally energised. See
-[06 — Troubleshooting](06-troubleshooting.md#things-that-are-not-faults).
+[06 — Troubleshooting](06-troubleshooting.md#grid-reading-0-w-0-hz-near-zero-volts).
 
 ---
 

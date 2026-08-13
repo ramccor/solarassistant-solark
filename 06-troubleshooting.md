@@ -50,12 +50,29 @@ physically plugged into the BMS port before anything else.
 - **SolarAssistant's "Inverter 1" being the parallel slave.** Expected. Numbering
   follows USB enumeration order, not Modbus address. See
   [00 — Overview](00-overview.md).
-- **Grid reading 0 W, 0 Hz and near-zero volts.** On an **off-grid site this is the
-  normal steady state** — the grid input is simply absent and the inverters run from PV
-  and battery. It is not a comms fault and not an alarm. On a grid-tied site the same
-  reading would indicate a genuine outage or an open grid disconnect.
 - **Small differences between inverters' readings.** Desirable — see
   [page 05, check 2](05-verification.md#check-2--per-inverter-values-are-independent-and-plausible).
+
+## Grid reading 0 W, 0 Hz, near-zero volts
+
+**Whether this is a fault depends entirely on the site, and the reading is identical
+either way.** It is listed separately for that reason — do not file it under either
+heading without knowing which kind of site you are on.
+
+| Site | What it means |
+|------|---------------|
+| **Off-grid** | The **normal steady state**. The grid input is simply absent and the inverters run from PV and battery. Not a comms fault, not an alarm |
+| **Grid-tied** | A **real fault** — an outage, an open grid disconnect, a tripped breaker, or a failed grid input |
+
+In both cases SolarAssistant is doing its job: it is reporting what the inverter reports.
+Nothing here indicates a problem with the monitoring chain, so on a grid-tied site do not
+spend time on cables, drivers, or USB ports — the fault is upstream of the inverter, in
+the grid connection itself.
+
+> **The risk is a habit formed on the wrong kind of site.** Anyone who has learned to
+> ignore a zero grid reading off-grid will ignore it on a grid-tied site too, where it is
+> the first thing that should be investigated. If you maintain both kinds of site, check
+> which one you are looking at before deciding this reading is benign.
 
 ## Escalation
 
