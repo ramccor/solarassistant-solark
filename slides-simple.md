@@ -3,8 +3,8 @@ marp: true
 size: 16:9
 paginate: true
 theme: default
-title: SolarAssistant — Sol-Ark 15K + Pytes V5 Install Walkthrough
-description: Installer walkthrough for wiring and configuring SolarAssistant against parallel Sol-Ark 15K inverters and a Pytes V5 battery stack.
+title: SolarAssistant — Sol-Ark 15K + Pytes V5 Install Walkthrough (Simplified)
+description: Simplified installer walkthrough for wiring and configuring SolarAssistant against parallel Sol-Ark 15K inverters and a Pytes V5 battery stack, assuming the cables and splitter are bought from the solar-assistant.io shop.
 style: |
   section {
     font-size: 25px;
@@ -71,11 +71,11 @@ style: |
 
 ## Parallel Sol-Ark 15K inverters + Pytes V5 battery stack
 
-Wiring, ordering, configuration, and verification
+Simplified — assumes the cables and splitter are ordered from the solar-assistant.io shop
 
 <br>
 
-Companion deck to the written guide — see `README.md`
+No pinouts. For the electrical detail behind any step, see the full deck or `README.md`
 
 ---
 
@@ -98,20 +98,21 @@ This adds monitoring to an already-commissioned system. It is **not** a commissi
 
 ---
 
-## The core problem: one port, two buses
+## The core problem: one port, two jobs
 
-The Sol-Ark's **2-in-1 BMS port** is a single RJ45 carrying two independent buses:
+The Sol-Ark's **2-in-1 BMS port** is a single RJ45 socket carrying two independent
+conversations at once:
 
-| Pin | Signal | Bus | Used by |
-|-----|--------|-----|---------|
-| 1 | RS485 **B** | RS485 | SolarAssistant |
-| 2 | RS485 **A** | RS485 | SolarAssistant |
-| 3 | GND | RS485 | SolarAssistant |
-| 4 | CAN High | CAN | Inverter → battery BMS |
-| 5 | CAN Low | CAN | Inverter → battery BMS |
-| 6–8 | unused | — | — |
+| Bus | Who uses it | What for |
+|-----|-------------|----------|
+| **CAN** | Inverter ↔ battery BMS | Already in use on a commissioned system |
+| **RS485** | SolarAssistant | The one you are adding |
 
-RS485 needs 3 pins, CAN needs 2 — both fit one connector. **Only one plug fits the socket.** Hence the splitter.
+Both fit in the one connector — but **only one plug fits the socket**, and the battery is
+already in it.
+
+**That is the entire reason the splitter exists.** It is the only part of this install that
+is not simply "plug the cable in."
 
 ---
 
@@ -216,20 +217,23 @@ The hub must be **powered**. Bus-powered hubs cause intermittent FTDI dropouts.
 
 ---
 
-## Don't substitute the cables
+## Order the parts, don't source them locally
+
+This deck assumes **every cable and the splitter come from the solar-assistant.io shop.**
+That assumption is doing a lot of work — it removes the entire class of problems caused by
+wrong-pinout cables and lookalike adapters.
+
+The supplied cables are 1.5 m, shielded, and pre-wired for this inverter family.
 
 <div class="warn">
 
-A generic USB-RS485 RJ45 cable **will most likely not work.** Pin assignment inside the RJ45 shell is not standardised — a cable wired for another inverter family puts RS485 A/B on the wrong pins.
+**Measure the RS485 run from the splitter**, not from the inverter port. Need more than
+1.5 m? Order a custom length rather than adding a coupler.
 
 </div>
 
-The supplied cables are 1.5 m, shielded, genuine FTDI.
-
-- Counterfeit FTDI chips fail *intermittently*, not cleanly — far harder to diagnose
-- The splitter is **not** a passive Y-adapter (more on this shortly)
-- Measure the RS485 run **from the splitter**, not the inverter port
-- Need more than 1.5 m? Order a custom length — every coupler is a fault candidate
+Nothing in this deck requires you to identify a pin, crimp a connector, or verify a
+conductor. If you find yourself doing any of those, you are off this path.
 
 ---
 
@@ -257,17 +261,17 @@ A comms cable is not worth working a live 15 kW enclosure.
 
 ---
 
-## Step 1 — Confirm the CAN pins are in use
+## Step 1 — Confirm the battery protocol
 
-On each inverter's display, check the battery protocol:
+On each inverter's display, check:
 
 ```
 Battery type      : Lithium
 Lithium protocol  : CAN (protocol 0)
 ```
 
-- **CAN (protocol 0)** → battery uses pins 4–5, RS485 free. **You need the splitter.** This is the normal Sol-Ark + Pytes case.
-- **An RS485 battery protocol** → pins 1–3 already occupied. This approach does not apply.
+- **CAN (protocol 0)** → the normal Sol-Ark + Pytes case. **You need the splitter.**
+- **Anything RS485** → this approach does not apply. Stop and check the full guide.
 
 Check **every** inverter, not just the master — a swapped or re-flashed unit may not match its siblings.
 
@@ -277,18 +281,21 @@ Check **every** inverter, not just the master — a swapped or re-flashed unit m
 
 ```
   Inverter BMS port          ┌──────────┐
-   (pins 1-5 in) ────────────│ splitter │
+   ──────────────────────────│ splitter │
                              └──┬────┬──┘
-                          pins  │    │  pins
-                           1-3  │    │  4-5
                          RS485  │    │  CAN
                                 │    └──► existing cable to battery BMS
                                 └──► new USB-RS485 cable to the Pi
 ```
 
+Unplug the battery cable from the inverter, plug the splitter in its place, then plug the
+battery cable into the splitter's CAN leg. The legs are **not interchangeable** — each is
+labelled.
+
 <div class="warn">
 
-**Never use a passive Y-splitter.** It passes all 8 pins to both sockets, putting RS485 on the battery leg — which breaks SolarAssistant's ability to read the inverter.
+Use the shop splitter. A generic RJ45 Y-adapter looks identical and is easier to source
+locally, but it is wired straight through and **will break battery comms**.
 
 </div>
 
@@ -355,7 +362,7 @@ Don't confuse the console port with the adjacent RS485/CAN sockets — same phys
 | Path | Carries | Endpoint |
 |------|---------|----------|
 | Inter-pack chain | Pack-to-pack aggregation | Between the packs |
-| CAN to inverters | SOC, charge/discharge limits | Sol-Ark BMS pins 4–5 |
+| CAN to inverters | SOC, charge/discharge limits | Sol-Ark BMS port (via the splitter) |
 | **RS232C console** | **Full per-pack telemetry** | **SolarAssistant USB** |
 
 The console cable is **additive** — the CAN link to the inverters stays exactly where it is.
@@ -557,12 +564,12 @@ Most future comms faults show up as a **change** from baseline, not an outright 
 |---------|--------------|
 | Fewer columns than inverters | Not every USB port selected |
 | Two columns, identical serials | Both cables on the same inverter |
-| Inverter Disconnected | Wrong pins/port, or non-Deye cable |
-| Inverter fine, **battery** drops out | Passive Y-splitter passing RS485 to battery |
+| Inverter Disconnected | Cable in the splitter's CAN leg instead of RS485 |
+| Inverter fine, **battery** drops out | Generic Y-adapter fitted instead of the shop splitter |
 | Battery Disconnected | Console cable in RS485/CAN socket |
 | Packs missing / capacity low | Duplicate addresses or broken chain |
 | Adapter vanished from `lsusb` | Cable, port, or power — try **Cycle USB power** |
-| Intermittent dropouts, no clean failure | Counterfeit FTDI, marginal run, or unpowered hub |
+| Intermittent dropouts, no clean failure | Marginal cable run or an unpowered hub |
 
 ---
 
@@ -591,11 +598,9 @@ Someone replaces the purpose-built splitter with a **generic RJ45 Y-adapter**. T
 
 </div>
 
-A passive Y-adapter passes all 8 pins to both sockets → RS485 lands on the battery leg.
-
 **The symptom is confusing:** the inverter still reads fine, the battery intermittently drops, and nothing looks wrong at the connector.
 
-If battery comms degrade after any maintenance visit — **check what's physically plugged into the BMS port first.**
+If battery comms degrade after any maintenance visit — **check what's physically plugged into the BMS port first.** Replace it with the shop splitter rather than trying to diagnose further.
 
 ---
 
@@ -814,3 +819,5 @@ hardware; believe it over SolarAssistant's checkbox.
 <br>
 
 Full written guide: `README.md` — pages 00 through 09
+
+Pinouts and cable-selection detail: the full deck, `slides.pdf`

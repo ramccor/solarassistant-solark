@@ -26,23 +26,36 @@ enclosure — read [00-overview](00-overview.md) first.
 
 ## Presentation deck
 
-`slides.md` is a [Marp](https://marp.app) deck covering the same material as a 48-slide
-installer walkthrough — for briefing an installer on a screen rather than reading the
-reference pages. It closes with an *After the install* section mirroring
-[page 08](08-recommended-settings.md), plus the key naming pairs from
-[page 09](09-terminology-mapping.md).
+There are two [Marp](https://marp.app) decks, both 48 slides, for briefing an installer on
+a screen rather than having them read the reference pages. Both close with an *After the
+install* section mirroring [page 08](08-recommended-settings.md) and the key naming pairs
+from [page 09](09-terminology-mapping.md).
+
+| Deck | Use it when |
+|------|-------------|
+| [`slides.md`](slides.md) | The installer may source their own cables, or you want the electrical detail |
+| [`slides-simple.md`](slides-simple.md) | **Every cable and the splitter are ordered from the solar-assistant.io shop** |
+
+The simplified deck drops the RJ45 pinout table, the pin-level splitter diagram, and the
+cable-substitution material, on the assumption that buying the shop parts removes that
+entire class of problem. Nothing in it asks the installer to identify a pin or verify a
+conductor. It is not a subset of the full deck — several slides are rewritten rather than
+removed, so **edits to shared content must be made in both files.**
 
 | File | Use |
 |------|-----|
-| [`slides.md`](slides.md) | Source; edit this |
-| `slides.pdf` | Hand out or present |
-| `slides.html` | Present in a browser |
+| `slides.md` / `slides-simple.md` | Source; edit these |
+| `slides.pdf` / `slides-simple.pdf` | Hand out or present |
+| `slides.html` / `slides-simple.html` | Present in a browser |
 
-Rebuild after editing the source:
+Rebuild after editing either source:
 
 ```bash
 marp slides.md --pdf  -o slides.pdf  --allow-local-files
 marp slides.md --html -o slides.html --allow-local-files
+
+marp slides-simple.md --pdf  -o slides-simple.pdf  --allow-local-files
+marp slides-simple.md --html -o slides-simple.html --allow-local-files
 ```
 
 The deck is a *walkthrough*; the numbered pages remain the reference. Pinout tables and
