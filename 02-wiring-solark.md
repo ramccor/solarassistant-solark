@@ -9,11 +9,30 @@
 > Sol-Ark's own shutdown sequence for your model and firmware.
 
 **Repeat this entire page once per inverter.** Every Sol-Ark on site gets its own
-splitter, its own RS485 cable, and its own USB port on the Pi.
+splitter, its own RS485 cable, and its own USB port on the Pi. Only the **master's**
+splitter carries a battery CAN cable — see [step 2](#step-2--fit-the-splitter).
+
+## Finding the right socket
+
+A Sol-Ark 15K-2P has **four RJ45 jacks** in the wiring compartment, and three of them are
+wrong. Identify the socket before you touch anything:
+
+| Silkscreen label | Count | What it is |
+|------------------|-------|------------|
+| `Parallel` | 2 | Inverter-to-inverter parallel link. Leave alone |
+| `Modbus RS485` | 1 | External Modbus devices such as meters. **Not this one** |
+| **`Battery CANBus`** | 1 | **The 2-in-1 port. This is the one.** Right-hand jack of the group |
+
+> **The `Modbus RS485` jack is a decoy.** You are running an RS485 cable, there is a jack
+> labelled `Modbus RS485`, and it is the wrong one. SolarAssistant reads the inverter over
+> the RS485 pins of the **`Battery CANBus`** jack — the port Sol-Ark's manual lists under
+> "BMS RJ45 ports (RS485 / CAN)" and instructs you to use for battery communications.
+
+Source: Sol-Ark 15K-2P-N manual, §1.1 General Description, component **E**.
 
 ## The 2-in-1 BMS port
 
-The Sol-Ark's BMS port is one RJ45 socket carrying two buses:
+The `Battery CANBus` jack is one RJ45 socket carrying two buses:
 
 | Pin | Signal | Bus |
 |-----|--------|-----|
@@ -50,12 +69,27 @@ re-flashed may not match its siblings.
 
 ## Step 2 — Fit the splitter
 
-Unplug the existing battery CAN cable from the BMS port and plug it into the splitter's
-**CAN (pins 4–5)** socket. Plug the splitter's single male RJ45 into the inverter's BMS
-port.
+Plug the splitter's single male RJ45 into the inverter's `Battery CANBus` jack.
+
+**What goes on the CAN leg depends on which inverter you are at:**
+
+| Inverter | CAN leg |
+|----------|---------|
+| **Master** | The existing battery CAN cable. Unplug it from the jack, move it to the splitter's **CAN (pins 4–5)** socket |
+| **Slave** | **Nothing. Leave it empty.** |
+
+Only the master talks to the battery stack over CAN; the slaves receive battery state
+across the inverter-to-inverter parallel link instead. A slave's `Battery CANBus` jack is
+therefore empty before you start, and its splitter's CAN leg stays empty afterwards.
+
+> **Why fit a splitter on a slave at all?** Strictly you could plug the RS485 cable
+> straight into an empty `Battery CANBus` jack. Fitting the splitter everywhere is a
+> deliberate choice: every inverter is wired identically, and the RS485 cable can never
+> end up sharing a socket with CAN. It costs one part per slave and removes a class of
+> mistake — worth it on a site that anyone else will ever maintain.
 
 ```
-  Inverter BMS port
+  Battery CANBus jack
    (pins 1-5 in)
         │
    ┌────┴─────┐
@@ -67,7 +101,8 @@ port.
       │    │
    RS485  CAN
       │    │
-      │    └──► existing cable to battery BMS
+      │    └──► MASTER: existing cable to battery BMS
+      │         SLAVE:  empty
       │
       └──► new USB-RS485 cable to the Pi
 ```

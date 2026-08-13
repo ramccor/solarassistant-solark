@@ -122,7 +122,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="solarassistant-install-walkthrough">SolarAssistant Install Walkthrough</h1>
 <h2 id="parallel-sol-ark-15k-inverters--pytes-v5-battery-stack">Parallel Sol-Ark 15K inverters + Pytes V5 battery stack</h2>
 <p>Wiring, ordering, configuration, and verification</p>
@@ -243,7 +243,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="what-were-building">What we're building</h2>
 <p>SolarAssistant reads <strong>every inverter individually</strong> and <strong>every battery pack</strong>, from one Raspberry Pi.</p>
 <table>
@@ -390,7 +390,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="the-core-problem-one-port-two-buses">The core problem: one port, two buses</h2>
 <p>The Sol-Ark's <strong>2-in-1 BMS port</strong> is a single RJ45 carrying two independent buses:</p>
 <table>
@@ -557,7 +557,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="the-two-scaling-rules">The two scaling rules</h2>
 <div class="warn">
 <p><strong>Inverters do NOT share a cable.</strong> Each Sol-Ark needs its own RS485 cable into its own USB port. The parallel CAN link between inverters carries no SolarAssistant data.</p>
@@ -681,7 +681,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="topology">Topology</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code>          ┌─────────────────────────────┐
           │   SolarAssistant (Pi 5)     │
@@ -819,7 +819,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="ordering">Ordering</h1>
 <p>What to buy, and how many</p>
 </section>
@@ -937,7 +937,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="purchase-rules">Purchase rules</h2>
 <table>
 <thead>
@@ -1120,7 +1120,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="the-usb-port-budget">The USB port budget</h2>
 <div class="warn">
 <p><strong>More than 3 inverters on a site requires a separate powered USB hub.</strong></p>
@@ -1275,7 +1275,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="dont-substitute-the-cables">Don't substitute the cables</h2>
 <div class="warn">
 <p>A generic USB-RS485 RJ45 cable <strong>will most likely not work.</strong> Pin assignment inside the RJ45 shell is not standardised — a cable wired for another inverter family puts RS485 A/B on the wrong pins.</p>
@@ -1402,7 +1402,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="wiring-the-inverters">Wiring the inverters</h1>
 <p>Repeat once per Sol-Ark</p>
 </section>
@@ -1520,7 +1520,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="before-you-open-anything">Before you open anything</h2>
 <div class="warn">
 <p>The RS485 port is behind the wiring compartment cover, alongside conductors at <strong>battery and AC potential</strong>.</p>
@@ -1643,17 +1643,39 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="step-1--confirm-the-can-pins-are-in-use">Step 1 — Confirm the CAN pins are in use</h2>
-<p>On each inverter's display, check the battery protocol:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Battery type      : Lithium
-Lithium protocol  : CAN (protocol 0)
-</code></pre>
-<ul>
-<li><strong>CAN (protocol 0)</strong> → battery uses pins 4–5, RS485 free. <strong>You need the splitter.</strong> This is the normal Sol-Ark + Pytes case.</li>
-<li><strong>An RS485 battery protocol</strong> → pins 1–3 already occupied. This approach does not apply.</li>
-</ul>
-<p>Check <strong>every</strong> inverter, not just the master — a swapped or re-flashed unit may not match its siblings.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="four-rj45-jacks--three-are-wrong">Four RJ45 jacks — three are wrong</h2>
+<table>
+<thead>
+<tr>
+<th>Silkscreen</th>
+<th>×</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Parallel</code></td>
+<td>2</td>
+<td>Inverter-to-inverter link — leave alone</td>
+</tr>
+<tr>
+<td><code>Modbus RS485</code></td>
+<td>1</td>
+<td>External meters. <strong>Not this one</strong></td>
+</tr>
+<tr>
+<td><strong><code>Battery CANBus</code></strong></td>
+<td>1</td>
+<td><strong>The 2-in-1 port — use this</strong>, right-hand jack</td>
+</tr>
+</tbody>
+</table>
+<div class="warn">
+<p><strong><code>Modbus RS485</code> is a decoy.</strong> You are running an RS485 cable and there is a jack labelled<br />
+<code>Modbus RS485</code>. It is the wrong one. SolarAssistant reads the inverter over the RS485 pins<br />
+of the <strong><code>Battery CANBus</code></strong> jack.</p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -1769,20 +1791,17 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="step-2--fit-the-splitter">Step 2 — Fit the splitter</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>  Inverter BMS port          ┌──────────┐
-   (pins 1-5 in) ────────────│ splitter │
-                             └──┬────┬──┘
-                          pins  │    │  pins
-                           1-3  │    │  4-5
-                         RS485  │    │  CAN
-                                │    └──► existing cable to battery BMS
-                                └──► new USB-RS485 cable to the Pi
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="step-1--confirm-the-can-pins-are-in-use">Step 1 — Confirm the CAN pins are in use</h2>
+<p>On each inverter's display, check the battery protocol:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Battery type      : Lithium
+Lithium protocol  : CAN (protocol 0)
 </code></pre>
-<div class="warn">
-<p><strong>Never use a passive Y-splitter.</strong> It passes all 8 pins to both sockets, putting RS485 on the battery leg — which breaks SolarAssistant's ability to read the inverter.</p>
-</div>
+<ul>
+<li><strong>CAN (protocol 0)</strong> → battery uses pins 4–5, RS485 free. <strong>You need the splitter.</strong> This is the normal Sol-Ark + Pytes case.</li>
+<li><strong>An RS485 battery protocol</strong> → pins 1–3 already occupied. This approach does not apply.</li>
+</ul>
+<p>Check <strong>every</strong> inverter, not just the master — a swapped or re-flashed unit may not match its siblings.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -1898,36 +1917,24 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="steps-3--4--cable-and-label">Steps 3 &amp; 4 — Cable and label</h2>
-<p><strong>Step 3 — One cable per inverter.</strong> Plug the Sol-Ark RS485 cable into the splitter's RS485 socket, run it to the Pi, own USB port. Never bridge two inverters onto one adapter.</p>
-<p>The inverter-to-inverter parallel CAN link is separate — <strong>leave it alone.</strong></p>
-<p><strong>Step 4 — Label both ends by serial number</strong>, not &quot;1&quot; and &quot;2&quot;:</p>
-<table>
-<thead>
-<tr>
-<th>Cable label (serial)</th>
-<th>Parallel role</th>
-<th>Modbus №</th>
-<th>Pi USB port</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>serial of inverter A</em></td>
-<td>Master / Slave</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><em>serial of inverter B</em></td>
-<td>Master / Slave</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Serial is the only key that stays stable across re-seated cables.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="step-2--fit-the-splitter">Step 2 — Fit the splitter</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>  Inverter BMS port          ┌──────────┐
+   (pins 1-5 in) ────────────│ splitter │
+                             └──┬────┬──┘
+                          pins  │    │  pins
+                           1-3  │    │  4-5
+                         RS485  │    │  CAN
+                                │    └──► MASTER: cable to battery BMS
+                                │         SLAVE:  empty
+                                └──► new USB-RS485 cable to the Pi
+</code></pre>
+<p><strong>Only the master's CAN leg is used.</strong> Slaves get battery state over the parallel link, so<br />
+a slave's jack is empty to begin with. Fit the splitter anyway — identical wiring<br />
+everywhere, and RS485 can never share a socket with CAN.</p>
+<div class="warn">
+<p><strong>Never use a passive Y-splitter.</strong> It passes all 8 pins to both sockets, putting RS485 on the battery leg — which breaks SolarAssistant's ability to read the inverter.</p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -2043,7 +2050,152 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="steps-3--4--cable-and-label">Steps 3 &amp; 4 — Cable and label</h2>
+<p><strong>Step 3 — One cable per inverter.</strong> Plug the Sol-Ark RS485 cable into the splitter's RS485 socket, run it to the Pi, own USB port. Never bridge two inverters onto one adapter.</p>
+<p>The inverter-to-inverter parallel CAN link is separate — <strong>leave it alone.</strong></p>
+<p><strong>Step 4 — Label both ends by serial number</strong>, not &quot;1&quot; and &quot;2&quot;:</p>
+<table>
+<thead>
+<tr>
+<th>Cable label (serial)</th>
+<th>Parallel role</th>
+<th>Modbus №</th>
+<th>Pi USB port</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>serial of inverter A</em></td>
+<td>Master / Slave</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><em>serial of inverter B</em></td>
+<td>Master / Slave</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Serial is the only key that stays stable across re-seated cables.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="step-5--restore-power">Step 5 — Restore power</h2>
 <p>Close up, restore AC and DC, bring the inverters up.</p>
 <div class="note">
@@ -2051,7 +2203,7 @@ section::after {
 </div>
 <p>If the parallel link was disturbed while the cover was off, you want to know now — not while debugging comms.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -2108,7 +2260,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="16" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="17" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -2165,136 +2317,9 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="wiring-the-battery">Wiring the battery</h1>
 <p>One cable, one port, every pack</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="pytes-v5--the-easy-half">Pytes V5 — the easy half</h2>
-<p>Plug the <strong>Pytes console USB cable</strong> into the master pack's <strong>RS232C / console</strong> port. That's it.</p>
-<ul>
-<li>One cable reads the <strong>entire stack</strong> — 2 packs or 12</li>
-<li>The master is the pack at the head of the chain, address set by DIP switches</li>
-<li>Read the legend on <em>your</em> pack revision — Pytes has shipped several</li>
-<li>On a commissioned bank, addressing is already correct: <strong>verify, don't adjust</strong></li>
-</ul>
-<div class="warn">
-<p>Don't confuse the console port with the adjacent RS485/CAN sockets — same physical connector. Wrong socket damages nothing; the battery just reports disconnected.</p>
-</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -2410,7 +2435,134 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="pytes-v5--the-easy-half">Pytes V5 — the easy half</h2>
+<p>Plug the <strong>Pytes console USB cable</strong> into the master pack's <strong>RS232C / console</strong> port. That's it.</p>
+<ul>
+<li>One cable reads the <strong>entire stack</strong> — 2 packs or 12</li>
+<li>The master is the pack at the head of the chain, address set by DIP switches</li>
+<li>Read the legend on <em>your</em> pack revision — Pytes has shipped several</li>
+<li>On a commissioned bank, addressing is already correct: <strong>verify, don't adjust</strong></li>
+</ul>
+<div class="warn">
+<p>Don't confuse the console port with the adjacent RS485/CAN sockets — same physical connector. Wrong socket damages nothing; the battery just reports disconnected.</p>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="19" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="three-separate-battery-comms-paths">Three separate battery comms paths</h2>
 <table>
 <thead>
@@ -2440,7 +2592,7 @@ section::after {
 </table>
 <p>The console cable is <strong>additive</strong> — the CAN link to the inverters stays exactly where it is.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -2497,7 +2649,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="19" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="20" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -2554,150 +2706,9 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="configuration">Configuration</h1>
 <p>Two drivers, N ports</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="step-1--confirm-the-adapters-enumerated">Step 1 — Confirm the adapters enumerated</h2>
-<p><strong>Configuration → System → USB devices → view detail</strong></p>
-<p><img src="images/04-usb-devices.png" alt="" style="width:1000px;" /></p>
-<table>
-<thead>
-<tr>
-<th>USB ID</th>
-<th>Part</th>
-<th>Count</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>0403:6001</code></td>
-<td>FT232 Serial (UART)</td>
-<td>one per <strong>inverter</strong></td>
-</tr>
-<tr>
-<td><code>0403:6015</code></td>
-<td>Bridge (I2C/SPI/UART/FIFO)</td>
-<td>one per <strong>battery stack</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Missing cable here = physical problem. Stop and fix it — no configuration will help.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -2813,7 +2824,148 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="step-1--confirm-the-adapters-enumerated">Step 1 — Confirm the adapters enumerated</h2>
+<p><strong>Configuration → System → USB devices → view detail</strong></p>
+<p><img src="images/04-usb-devices.png" alt="" style="width:1000px;" /></p>
+<table>
+<thead>
+<tr>
+<th>USB ID</th>
+<th>Part</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0403:6001</code></td>
+<td>FT232 Serial (UART)</td>
+<td>one per <strong>inverter</strong></td>
+</tr>
+<tr>
+<td><code>0403:6015</code></td>
+<td>Bridge (I2C/SPI/UART/FIFO)</td>
+<td>one per <strong>battery stack</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Missing cable here = physical problem. Stop and fix it — no configuration will help.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="step-2--unlock-then-set-the-drivers">Step 2 — Unlock, then set the drivers</h2>
 <p>The Devices form is <strong>read-only while connected</strong> — press <strong>Disconnect</strong> first.</p>
 <div class="warn">
@@ -2898,7 +3050,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:default;--style:section {
+" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -2955,7 +3107,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;--marpit-advanced-background-split:42%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/04-devices-panel.png&quot;);background-size:520px auto;"></figure></div></section></foreignObject><foreignObject width="58%" height="720"><section id="22" data-paginate="true" data-theme="default" data-style="section {
+;--marpit-advanced-background-split:42%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/04-devices-panel.png&quot;);background-size:520px auto;"></figure></div></section></foreignObject><foreignObject width="58%" height="720"><section id="23" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -3012,7 +3164,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--theme:default;--style:section {
+" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -3069,7 +3221,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;--marpit-advanced-background-split:42%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+;--marpit-advanced-background-split:42%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h2 id="the-step-people-miss">The step people miss</h2>
 
 <p>Inverter <strong>Connections is a multi-select list</strong> — not a single-choice dropdown.</p>
@@ -3136,7 +3288,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" data-marpit-pagination="22" style="" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+" lang="en-US" data-marpit-pagination="23" style="" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -3193,7 +3345,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="23" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="24" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -3250,133 +3402,9 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="verification">Verification</h1>
 <p>&quot;Connected&quot; is a weak signal</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="24" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="why-connected-isnt-enough">Why &quot;Connected&quot; isn't enough</h2>
-<p>The status goes green when <strong>any</strong> selected port opens.</p>
-<p>It does <strong>not</strong> prove:</p>
-<ul>
-<li>every inverter is being polled</li>
-<li>every pack is enumerating</li>
-</ul>
-<p>Four checks follow. Work through all of them.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -3492,10 +3520,15 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="check-1--one-column-per-inverter">Check 1 — One column per inverter</h2>
-<p><img src="images/deck/cluster-head.png" alt="" style="width:800px;" /></p>
-<p>Page is titled <strong>Inverter cluster</strong>, with a numbered column per unit beside Total. <strong>Count the columns against the inverters on site.</strong></p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="why-connected-isnt-enough">Why &quot;Connected&quot; isn't enough</h2>
+<p>The status goes green when <strong>any</strong> selected port opens.</p>
+<p>It does <strong>not</strong> prove:</p>
+<ul>
+<li>every inverter is being polled</li>
+<li>every pack is enumerating</li>
+</ul>
+<p>Four checks follow. Work through all of them.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -3611,10 +3644,10 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="check-2--values-independent-and-plausible">Check 2 — Values independent and plausible</h2>
-<p><img src="images/deck/cluster-head.png" alt="" style="width:760px;" /></p>
-<p>Load <strong>1.13 vs 1.15 kW</strong>. PV <strong>1.19 vs 1.20 kW</strong> — closely matched but <strong>not identical</strong>. That divergence is the proof of independent live reads; byte-identical columns are suspicious.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="check-1--one-column-per-inverter">Check 1 — One column per inverter</h2>
+<p><img src="images/deck/cluster-head.png" alt="" style="width:800px;" /></p>
+<p>Page is titled <strong>Inverter cluster</strong>, with a numbered column per unit beside Total. <strong>Count the columns against the inverters on site.</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -3730,307 +3763,132 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="check-2--values-independent-and-plausible">Check 2 — Values independent and plausible</h2>
+<p><img src="images/deck/cluster-head.png" alt="" style="width:760px;" /></p>
+<p>Load <strong>1.13 vs 1.15 kW</strong>. PV <strong>1.19 vs 1.20 kW</strong> — closely matched but <strong>not identical</strong>. That divergence is the proof of independent live reads; byte-identical columns are suspicious.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="check-3--serials-all-distinct">Check 3 — Serials all distinct</h2>
 <p><img src="images/deck/cluster-serials.png" alt="" style="width:1000px;" /></p>
 <p>Same serial in two columns = <strong>one inverter read twice</strong> — a cable is in the wrong inverter's splitter.</p>
 <p>Each Sol-Ark 15K should also report <strong>3 MPPTs</strong> and <strong>15.0 kW</strong> max AC output.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/deck/inv-spec.png&quot;);background-size:500px auto;"></figure></div></section></foreignObject><foreignObject width="56%" height="720"><section id="28" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="28" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
-<h2 id="check-3--exactly-one-master">Check 3 — Exactly one Master</h2>
-
-<p>Switch inverters with the breadcrumb dropdown. Each must load its own Specification block.</p>
-<p>Check per unit: driver, unique serial, unique Modbus number, and <code>Lithium protocol: CAN (protocol 0)</code>.</p>
-<div class="warn">
-<p><strong>Exactly one unit must report Master.</strong> Two masters, or none, is a parallel fault on the inverters themselves.</p>
-</div>
-</section>
-</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="28" style="" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4144,36 +4002,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="the-numbering-gotcha">The numbering gotcha</h2>
-<div class="warn">
-<p>SolarAssistant numbers inverters by <strong>USB enumeration order</strong> — not by Modbus address, not by parallel role.</p>
-</div>
-<p>On the reference site:</p>
-<table>
-<thead>
-<tr>
-<th>SolarAssistant name</th>
-<th>Parallel role</th>
-<th>Modbus №</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Inverter <strong>1</strong></td>
-<td>Slave</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Inverter <strong>2</strong></td>
-<td><strong>Master</strong></td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-<p>Its &quot;Inverter 1&quot; is the Sol-Ark <em>slave</em>. <strong>Match on serial number</strong> — the only unambiguous key.</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" data-style="section {
+;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/deck/inv-spec.png&quot;);background-size:500px auto;"></figure></div></section></foreignObject><foreignObject width="56%" height="720"><section id="29" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4230,7 +4059,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:default;--style:section {
+" lang="en-US" data-marpit-pagination="29" style="--paginate:true;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4287,154 +4116,14 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/05-battery-summary.png&quot;);background-size:500px auto;"></figure></div></section></foreignObject><foreignObject width="56%" height="720"><section id="30" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
-<h2 id="check-4--every-pack-enumerates">Check 4 — Every pack enumerates</h2>
+;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<h2 id="check-3--exactly-one-master">Check 3 — Exactly one Master</h2>
 
-<table>
-<thead>
-<tr>
-<th>Signal</th>
-<th>Expected</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Capacity</td>
-<td>packs × per-pack Ah</td>
-</tr>
-<tr>
-<td>Pack cards</td>
-<td>one per pack</td>
-</tr>
-<tr>
-<td>Protocol</td>
-<td>reported (e.g. <code>V2P</code>)</td>
-</tr>
-<tr>
-<td>Serials</td>
-<td>all distinct</td>
-</tr>
-<tr>
-<td>Firmware</td>
-<td>uniform</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Capacity is the fastest tell</strong> — twelve 100 Ah packs must sum to 1200 Ah.</p>
+<p>Switch inverters with the breadcrumb dropdown. Each must load its own Specification block.</p>
+<p>Check per unit: driver, unique serial, unique Modbus number, and <code>Lithium protocol: CAN (protocol 0)</code>.</p>
+<div class="warn">
+<p><strong>Exactly one unit must report Master.</strong> Two masters, or none, is a parallel fault on the inverters themselves.</p>
+</div>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -4493,7 +4182,150 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" data-marpit-pagination="30" style="" data-marpit-pagination-total="48" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" data-style="section {
+" lang="en-US" data-marpit-pagination="29" style="" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="30" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="the-numbering-gotcha">The numbering gotcha</h2>
+<div class="warn">
+<p>SolarAssistant numbers inverters by <strong>USB enumeration order</strong> — not by Modbus address, not by parallel role.</p>
+</div>
+<p>On the reference site:</p>
+<table>
+<thead>
+<tr>
+<th>SolarAssistant name</th>
+<th>Parallel role</th>
+<th>Modbus №</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inverter <strong>1</strong></td>
+<td>Slave</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Inverter <strong>2</strong></td>
+<td><strong>Master</strong></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Its &quot;Inverter 1&quot; is the Sol-Ark <em>slave</em>. <strong>Match on serial number</strong> — the only unambiguous key.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4607,13 +4439,213 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="all-packs-one-cable">All packs, one cable</h2>
-<p><img src="images/deck/packs-band.png" alt="" style="width:660px;" /></p>
-<p>Each pack reports its own model, serial, and firmware — all read through the <strong>single console cable</strong> on the master.</p>
-<p>Firmware should be uniform across a stack.</p>
+;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;images/05-battery-summary.png&quot;);background-size:500px auto;"></figure></div></section></foreignObject><foreignObject width="56%" height="720"><section id="31" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="31" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;--marpit-advanced-background-split:44%;" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
+<h2 id="check-4--every-pack-enumerates">Check 4 — Every pack enumerates</h2>
+
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capacity</td>
+<td>packs × per-pack Ah</td>
+</tr>
+<tr>
+<td>Pack cards</td>
+<td>one per pack</td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>reported (e.g. <code>V2P</code>)</td>
+</tr>
+<tr>
+<td>Serials</td>
+<td>all distinct</td>
+</tr>
+<tr>
+<td>Firmware</td>
+<td>uniform</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Capacity is the fastest tell</strong> — twelve 100 Ah packs must sum to 1200 Ah.</p>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="default" data-style="section {
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="31" style="" data-marpit-pagination-total="49" data-size="16:9" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4727,7 +4759,127 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="all-packs-one-cable">All packs, one cable</h2>
+<p><img src="images/deck/packs-band.png" alt="" style="width:660px;" /></p>
+<p>Each pack reports its own model, serial, and firmware — all read through the <strong>single console cable</strong> on the master.</p>
+<p>Firmware should be uniform across a stack.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="33" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="record-a-baseline">Record a baseline</h2>
 <p>Once verified good, write these down and keep them with the install:</p>
 <ul>
@@ -4740,7 +4892,7 @@ section::after {
 <p>Most future comms faults show up as a <strong>change</strong> from baseline, not an outright failure. Without a baseline, the change is invisible.</p>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4797,7 +4949,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="33" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="34" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -4854,167 +5006,8 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="troubleshooting">Troubleshooting</h1>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="34" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="symptom-%E2%86%92-cause">Symptom → cause</h2>
-<table>
-<thead>
-<tr>
-<th>Symptom</th>
-<th>Likely cause</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Fewer columns than inverters</td>
-<td>Not every USB port selected</td>
-</tr>
-<tr>
-<td>Two columns, identical serials</td>
-<td>Both cables on the same inverter</td>
-</tr>
-<tr>
-<td>Inverter Disconnected</td>
-<td>Wrong pins/port, or non-Deye cable</td>
-</tr>
-<tr>
-<td>Inverter fine, <strong>battery</strong> drops out</td>
-<td>Passive Y-splitter passing RS485 to battery</td>
-</tr>
-<tr>
-<td>Battery Disconnected</td>
-<td>Console cable in RS485/CAN socket</td>
-</tr>
-<tr>
-<td>Packs missing / capacity low</td>
-<td>Duplicate addresses or broken chain</td>
-</tr>
-<tr>
-<td>Adapter vanished from <code>lsusb</code></td>
-<td>Cable, port, or power — try <strong>Cycle USB power</strong></td>
-</tr>
-<tr>
-<td>Intermittent dropouts, no clean failure</td>
-<td>Counterfeit FTDI, marginal run, or unpowered hub</td>
-</tr>
-</tbody>
-</table>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -5130,18 +5123,50 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="diagnostic-order">Diagnostic order</h2>
-<p>Work outward from the host — each step rules out everything before it:</p>
-<ol>
-<li><strong>USB devices page</strong> — right count, all FTDI. Try <strong>Cycle USB power</strong>.</li>
-<li><strong>Devices panel</strong> — correct drivers, correct port count, Connected.</li>
-<li><strong><code>/inverter/status</code></strong> — one column per inverter, distinct serials.</li>
-<li><strong><code>/battery/status</code></strong> — full pack count, expected capacity.</li>
-</ol>
-<div class="note">
-<p>SSH is disabled by default — there's no shell fallback. All diagnostics run from the web UI.</p>
-</div>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="symptom-%E2%86%92-cause">Symptom → cause</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fewer columns than inverters</td>
+<td>Not every USB port selected</td>
+</tr>
+<tr>
+<td>Two columns, identical serials</td>
+<td>Both cables on the same inverter</td>
+</tr>
+<tr>
+<td>Inverter Disconnected</td>
+<td>Wrong pins/port, or non-Deye cable</td>
+</tr>
+<tr>
+<td>Inverter fine, <strong>battery</strong> drops out</td>
+<td>Passive Y-splitter passing RS485 to battery</td>
+</tr>
+<tr>
+<td>Battery Disconnected</td>
+<td>Console cable in RS485/CAN socket</td>
+</tr>
+<tr>
+<td>Packs missing / capacity low</td>
+<td>Duplicate addresses or broken chain</td>
+</tr>
+<tr>
+<td>Adapter vanished from <code>lsusb</code></td>
+<td>Cable, port, or power — try <strong>Cycle USB power</strong></td>
+</tr>
+<tr>
+<td>Intermittent dropouts, no clean failure</td>
+<td>Counterfeit FTDI, marginal run, or unpowered hub</td>
+</tr>
+</tbody>
+</table>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -5257,14 +5282,18 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="the-failure-to-watch-for">The failure to watch for</h2>
-<div class="warn">
-<p>Someone replaces the purpose-built splitter with a <strong>generic RJ45 Y-adapter</strong>. They look interchangeable and the generic one is cheaper and easier to source locally.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="diagnostic-order">Diagnostic order</h2>
+<p>Work outward from the host — each step rules out everything before it:</p>
+<ol>
+<li><strong>USB devices page</strong> — right count, all FTDI. Try <strong>Cycle USB power</strong>.</li>
+<li><strong>Devices panel</strong> — correct drivers, correct port count, Connected.</li>
+<li><strong><code>/inverter/status</code></strong> — one column per inverter, distinct serials.</li>
+<li><strong><code>/battery/status</code></strong> — full pack count, expected capacity.</li>
+</ol>
+<div class="note">
+<p>SSH is disabled by default — there's no shell fallback. All diagnostics run from the web UI.</p>
 </div>
-<p>A passive Y-adapter passes all 8 pins to both sockets → RS485 lands on the battery leg.</p>
-<p><strong>The symptom is confusing:</strong> the inverter still reads fine, the battery intermittently drops, and nothing looks wrong at the connector.</p>
-<p>If battery comms degrade after any maintenance visit — <strong>check what's physically plugged into the BMS port first.</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -5380,7 +5409,130 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="the-failure-to-watch-for">The failure to watch for</h2>
+<div class="warn">
+<p>Someone replaces the purpose-built splitter with a <strong>generic RJ45 Y-adapter</strong>. They look interchangeable and the generic one is cheaper and easier to source locally.</p>
+</div>
+<p>A passive Y-adapter passes all 8 pins to both sockets → RS485 lands on the battery leg.</p>
+<p><strong>The symptom is confusing:</strong> the inverter still reads fine, the battery intermittently drops, and nothing looks wrong at the connector.</p>
+<p>If battery comms degrade after any maintenance visit — <strong>check what's physically plugged into the BMS port first.</strong></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="38" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="not-faults">Not faults</h2>
 <table>
 <thead>
@@ -5408,7 +5560,7 @@ section::after {
 <p>On an off-grid installation, grid-absent is the <strong>expected steady state</strong>, not an alarm. Don't treat it as a fault, and don't let it mask a real comms problem elsewhere.</p>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -5465,7 +5617,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="38" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="39" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -5522,157 +5674,10 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="after-the-install">After the install</h1>
 <h2 id="three-optional-improvements">Three optional improvements</h2>
 <p>None of these is required — the install is complete without them</p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="default" data-style="section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-" lang="en-US" data-marpit-pagination="39" style="--paginate:true;--theme:default;--style:section {
-  font-size: 25px;
-  padding: 50px 60px;
-}
-section.lead {
-  background: #1e2430;
-  color: #f4f6f8;
-}
-section.lead h1 {
-  color: #ffb547;
-  font-size: 52px;
-  border: none;
-  margin-bottom: 8px;
-}
-section.lead h2 {
-  color: #f4f6f8;
-  font-weight: 400;
-  font-size: 30px;
-  border: none;
-}
-section.lead p, section.lead li { color: #c8cdd6; }
-h1 { font-size: 40px; color: #1e2430; }
-h2 {
-  font-size: 32px;
-  color: #1e2430;
-  border-bottom: 3px solid #ffb547;
-  padding-bottom: 6px;
-}
-table { font-size: 21px; margin: 0 auto; }
-th {
-  background: #1e2430;
-  color: #fff;
-  font-weight: 600;
-}
-code { background: #eef1f5; color: #b3491a; }
-strong { color: #0d5c3a; }
-.warn {
-  background: #fdf0e6;
-  border-left: 6px solid #d9531e;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-.warn strong { color: #a8380f; }
-.note strong { color: #1f4e7a; }
-.note {
-  background: #eef4fb;
-  border-left: 6px solid #2b6cb0;
-  padding: 14px 20px;
-  font-size: 23px;
-  margin: 18px 0;
-}
-footer { color: #8a919b; font-size: 16px; }
-section::after {
-  color: #8a919b;
-  font-size: 16px;
-}
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="what-where-and-what-it-costs">What, where, and what it costs</h2>
-<table>
-<thead>
-<tr>
-<th>Change</th>
-<th>Page</th>
-<th>Disconnect?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>MQTT + Home Assistant</td>
-<td><code>Configuration → MQTT</code></td>
-<td>No</td>
-</tr>
-<tr>
-<td>Battery capacity fallback</td>
-<td><code>Configuration → Advanced</code></td>
-<td><strong>Yes</strong></td>
-</tr>
-<tr>
-<td>PV forecast inputs</td>
-<td><code>Configuration → Advanced</code></td>
-<td><strong>Yes</strong></td>
-</tr>
-</tbody>
-</table>
-<p>The Advanced page is <strong>read-only while connected</strong> and greys out every field. Disconnecting stops data collection.</p>
-<div class="note">
-<p><strong>Batch the two Advanced changes into one maintenance window</strong> — same page, one collection gap instead of two. Verify the install first; re-verify after.</p>
-</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -5788,40 +5793,38 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="1-mqtt--home-assistant-discovery">1. MQTT + Home Assistant discovery</h2>
-<p>The biggest gain if you run Home Assistant. The broker ships <strong>disabled</strong>; auto-discovery publishes every metric — per inverter, per pack — as HA entities automatically.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="what-where-and-what-it-costs">What, where, and what it costs</h2>
 <table>
 <thead>
 <tr>
-<th>Field</th>
-<th>Set to</th>
+<th>Change</th>
+<th>Page</th>
+<th>Disconnect?</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Topic prefix</td>
-<td>leave at default</td>
+<td>MQTT + Home Assistant</td>
+<td><code>Configuration → MQTT</code></td>
+<td>No</td>
 </tr>
 <tr>
-<td>Allow setting changes</td>
-<td><strong>Disabled</strong></td>
+<td>Battery capacity fallback</td>
+<td><code>Configuration → Advanced</code></td>
+<td><strong>Yes</strong></td>
 </tr>
 <tr>
-<td>HomeAssistant → Unique ID</td>
-<td>short, stable site slug</td>
-</tr>
-<tr>
-<td>HomeAssistant → Auto discovery</td>
-<td><strong>Enabled</strong></td>
-</tr>
-<tr>
-<td>Username / Password</td>
-<td>set both</td>
+<td>PV forecast inputs</td>
+<td><code>Configuration → Advanced</code></td>
+<td><strong>Yes</strong></td>
 </tr>
 </tbody>
 </table>
-<p>Then <strong><code>Configuration</code> → MQTT Broker → Start.</strong> The MQTT page configures the broker; it does not start it.</p>
+<p>The Advanced page is <strong>read-only while connected</strong> and greys out every field. Disconnecting stops data collection.</p>
+<div class="note">
+<p><strong>Batch the two Advanced changes into one maintenance window</strong> — same page, one collection gap instead of two. Verify the install first; re-verify after.</p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -5937,15 +5940,40 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="mqtt--two-things-to-get-right">MQTT — two things to get right</h2>
-<div class="warn">
-<p><strong><code>Allow setting changes</code> grants write control over your inverters.</strong> Enabled, anything that can publish can change work mode, charge currents, generator control. Leave it Disabled unless you intend to automate — and never expose the broker beyond the LAN.</p>
-</div>
-<div class="warn">
-<p><strong><code>Unique ID</code> is effectively permanent.</strong> Changing it later re-creates every entity under new IDs, orphaning HA history and dashboards. Set it before first connection, even on a single site.</p>
-</div>
-<p>Port 1883 is plaintext, no TLS. <strong>Check first:</strong> SolarAssistant runs its <em>own</em> broker — if HA already uses Mosquitto, confirm your HA version supports more than one.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="1-mqtt--home-assistant-discovery">1. MQTT + Home Assistant discovery</h2>
+<p>The biggest gain if you run Home Assistant. The broker ships <strong>disabled</strong>; auto-discovery publishes every metric — per inverter, per pack — as HA entities automatically.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Set to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Topic prefix</td>
+<td>leave at default</td>
+</tr>
+<tr>
+<td>Allow setting changes</td>
+<td><strong>Disabled</strong></td>
+</tr>
+<tr>
+<td>HomeAssistant → Unique ID</td>
+<td>short, stable site slug</td>
+</tr>
+<tr>
+<td>HomeAssistant → Auto discovery</td>
+<td><strong>Enabled</strong></td>
+</tr>
+<tr>
+<td>Username / Password</td>
+<td>set both</td>
+</tr>
+</tbody>
+</table>
+<p>Then <strong><code>Configuration</code> → MQTT Broker → Start.</strong> The MQTT page configures the broker; it does not start it.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -6061,17 +6089,15 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="2-battery-capacity-fallback">2. Battery capacity fallback</h2>
-<p><code>Configuration → Advanced → Battery → Capacity kWh</code></p>
-<p>Commonly holds a <strong>single-pack</strong> figure — wrong by the pack count in a multi-pack bank.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Capacity kWh  = packs × per-pack kWh
-per-pack kWh  = nominal pack voltage × pack Ah ÷ 1000
-</code></pre>
-<p>Only used when capacity <strong>isn't readable</strong> from battery or inverter — so it's dormant on a healthy install, and goes live exactly when comms drop. A full bank can then read as nearly empty, while you're already troubleshooting.</p>
-<div class="note">
-<p><strong>Risk: none.</strong> Display fallback only — charge control comes from the inverter settings and the BMS over CAN.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="mqtt--two-things-to-get-right">MQTT — two things to get right</h2>
+<div class="warn">
+<p><strong><code>Allow setting changes</code> grants write control over your inverters.</strong> Enabled, anything that can publish can change work mode, charge currents, generator control. Leave it Disabled unless you intend to automate — and never expose the broker beyond the LAN.</p>
 </div>
+<div class="warn">
+<p><strong><code>Unique ID</code> is effectively permanent.</strong> Changing it later re-creates every entity under new IDs, orphaning HA history and dashboards. Set it before first connection, even on a single site.</p>
+</div>
+<p>Port 1883 is plaintext, no TLS. <strong>Check first:</strong> SolarAssistant runs its <em>own</em> broker — if HA already uses Mosquitto, confirm your HA version supports more than one.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -6187,42 +6213,16 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="3-pv-forecast-inputs">3. PV forecast inputs</h2>
-<p><code>Configuration → Advanced → Solar PV</code> — decoration on a grid-tied site, <strong>operational off-grid</strong>: it's the input to &quot;run the generator tonight?&quot;</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Latitude / Longitude</td>
-<td>Site coordinates</td>
-</tr>
-<tr>
-<td>Tilt</td>
-<td>Racking angle, or roof pitch</td>
-</tr>
-<tr>
-<td>Azimuth</td>
-<td>Array bearing</td>
-</tr>
-<tr>
-<td>Temp. coefficient, NMOT</td>
-<td>Module datasheet</td>
-</tr>
-<tr>
-<td>Rated power <em>(Configuration page)</em></td>
-<td><strong>DC nameplate sum</strong> of panels</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Azimuth <code>0</code> = due south</strong>, <code>−90</code> east, <code>90</code> west, <code>180</code>/<code>−180</code> north. A stored <code>0</code> is legitimate, not a placeholder.</p>
-<div class="warn">
-<p><strong>Don't reuse a compass bearing.</strong> pvlib, PVWatts and Home Assistant put <code>0</code> at <strong>north</strong>. Applying one here points a south-facing array due north.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="2-battery-capacity-fallback">2. Battery capacity fallback</h2>
+<p><code>Configuration → Advanced → Battery → Capacity kWh</code></p>
+<p>Commonly holds a <strong>single-pack</strong> figure — wrong by the pack count in a multi-pack bank.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Capacity kWh  = packs × per-pack kWh
+per-pack kWh  = nominal pack voltage × pack Ah ÷ 1000
+</code></pre>
+<p>Only used when capacity <strong>isn't readable</strong> from battery or inverter — so it's dormant on a healthy install, and goes live exactly when comms drop. A full bank can then read as nearly empty, while you're already troubleshooting.</p>
+<div class="note">
+<p><strong>Risk: none.</strong> Display fallback only — charge control comes from the inverter settings and the BMS over CAN.</p>
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-theme="default" data-style="section {
@@ -6339,37 +6339,42 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="pv-forecast--validate-dont-guess">PV forecast — validate, don't guess</h2>
-<p>Compare predicted vs actual over two or three clear-sky days:</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="3-pv-forecast-inputs">3. PV forecast inputs</h2>
+<p><code>Configuration → Advanced → Solar PV</code> — decoration on a grid-tied site, <strong>operational off-grid</strong>: it's the input to &quot;run the generator tonight?&quot;</p>
 <table>
 <thead>
 <tr>
-<th>Symptom</th>
-<th>Likely culprit</th>
+<th>Field</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Over/under-predicts by a fixed ratio</td>
-<td>Rated power</td>
+<td>Latitude / Longitude</td>
+<td>Site coordinates</td>
 </tr>
 <tr>
-<td>Peak arrives earlier or later</td>
-<td>Azimuth</td>
-</tr>
-<tr>
-<td>Accurate in one season, poor in the other</td>
 <td>Tilt</td>
+<td>Racking angle, or roof pitch</td>
 </tr>
 <tr>
-<td>Drifts high in afternoon heat</td>
-<td>Temperature coefficient</td>
+<td>Azimuth</td>
+<td>Array bearing</td>
+</tr>
+<tr>
+<td>Temp. coefficient, NMOT</td>
+<td>Module datasheet</td>
+</tr>
+<tr>
+<td>Rated power <em>(Configuration page)</em></td>
+<td><strong>DC nameplate sum</strong> of panels</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Azimuth <code>0</code> = due south</strong>, <code>−90</code> east, <code>90</code> west, <code>180</code>/<code>−180</code> north. A stored <code>0</code> is legitimate, not a placeholder.</p>
 <div class="warn">
-<p><strong>Multi-orientation arrays:</strong> only one tilt and one azimuth are accepted. Enter the <strong>average</strong> facing direction, weighted by rated power if the split is uneven, and accept an imperfect curve.</p>
+<p><strong>Don't reuse a compass bearing.</strong> pvlib, PVWatts and Home Assistant put <code>0</code> at <strong>north</strong>. Applying one here points a south-facing array due north.</p>
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-theme="default" data-style="section {
@@ -6486,45 +6491,38 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="leave-these-alone">Leave these alone</h2>
-<p>Look adjustable; already correct on a working install.</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="pv-forecast--validate-dont-guess">PV forecast — validate, don't guess</h2>
+<p>Compare predicted vs actual over two or three clear-sky days:</p>
 <table>
 <thead>
 <tr>
-<th>Setting</th>
-<th>Correct</th>
-<th>Why</th>
+<th>Symptom</th>
+<th>Likely culprit</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Battery → Read current from</td>
-<td><code>Battery</code></td>
-<td><code>Inverter</code> is for banks where <strong>only the master</strong> is readable</td>
+<td>Over/under-predicts by a fixed ratio</td>
+<td>Rated power</td>
 </tr>
 <tr>
-<td>Inverter → MPPT connections</td>
-<td><code>Auto detect</code></td>
-<td>Correctly finds the actual count</td>
+<td>Peak arrives earlier or later</td>
+<td>Azimuth</td>
 </tr>
 <tr>
-<td>Grid connection / multiplier</td>
-<td><code>Auto detect</code></td>
-<td></td>
+<td>Accurate in one season, poor in the other</td>
+<td>Tilt</td>
 </tr>
 <tr>
-<td>Allow passive reading</td>
-<td><code>Yes</code></td>
-<td>Harmless on a dedicated RS485 line</td>
-</tr>
-<tr>
-<td>Grid → Provider</td>
-<td><code>Default</code></td>
-<td>Tariff data — irrelevant off-grid</td>
+<td>Drifts high in afternoon heat</td>
+<td>Temperature coefficient</td>
 </tr>
 </tbody>
 </table>
+<div class="warn">
+<p><strong>Multi-orientation arrays:</strong> only one tilt and one azimuth are accepted. Enter the <strong>average</strong> facing direction, weighted by rated power if the split is uneven, and accept an imperfect curve.</p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -6640,48 +6638,45 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
-<h2 id="sol-ark-%E2%86%94-solarassistant">Sol-Ark ↔ SolarAssistant</h2>
-<p>You will have <strong>both apps open</strong> while commissioning. The labels rarely match:</p>
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="leave-these-alone">Leave these alone</h2>
+<p>Look adjustable; already correct on a working install.</p>
 <table>
 <thead>
 <tr>
-<th>MySolArk</th>
-<th>SolarAssistant</th>
+<th>Setting</th>
+<th>Correct</th>
+<th>Why</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Limited power to Load</strong></td>
-<td><strong>Zero export to load</strong></td>
+<td>Battery → Read current from</td>
+<td><code>Battery</code></td>
+<td><code>Inverter</code> is for banks where <strong>only the master</strong> is readable</td>
 </tr>
 <tr>
-<td><strong>Grid Start %</strong></td>
-<td><strong>Start grid charge capacity</strong></td>
+<td>Inverter → MPPT connections</td>
+<td><code>Auto detect</code></td>
+<td>Correctly finds the actual count</td>
 </tr>
 <tr>
-<td>Grid Start A</td>
-<td>Max grid charge current</td>
+<td>Grid connection / multiplier</td>
+<td><code>Auto detect</code></td>
+<td></td>
 </tr>
 <tr>
-<td>Batt Shutdown / Low / Restart %</td>
-<td>Output shutdown / Stop / Start discharge</td>
+<td>Allow passive reading</td>
+<td><code>Yes</code></td>
+<td>Harmless on a dedicated RS485 line</td>
 </tr>
 <tr>
-<td>BMS Lithium Batt Mode</td>
-<td>Lithium protocol — <code>0</code> is CAN</td>
-</tr>
-<tr>
-<td>SmartLoad Setup</td>
-<td>Auxiliary → Aux port</td>
-</tr>
-<tr>
-<td>Equipment mode / Modbus SN</td>
-<td>Parallel role / Modbus №</td>
+<td>Grid → Provider</td>
+<td><code>Default</code></td>
+<td>Tariff data — irrelevant off-grid</td>
 </tr>
 </tbody>
 </table>
-<p>Full table: <strong>page 09</strong>. Labels drift between app versions; the registers don't.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -6797,7 +6792,164 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
+<h2 id="sol-ark-%E2%86%94-solarassistant">Sol-Ark ↔ SolarAssistant</h2>
+<p>You will have <strong>both apps open</strong> while commissioning. The labels rarely match:</p>
+<table>
+<thead>
+<tr>
+<th>MySolArk</th>
+<th>SolarAssistant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Limited power to Load</strong></td>
+<td><strong>Zero export to load</strong></td>
+</tr>
+<tr>
+<td><strong>Grid Start %</strong></td>
+<td><strong>Start grid charge capacity</strong></td>
+</tr>
+<tr>
+<td>Grid Start A</td>
+<td>Max grid charge current</td>
+</tr>
+<tr>
+<td>Batt Shutdown / Low / Restart %</td>
+<td>Output shutdown / Stop / Start discharge</td>
+</tr>
+<tr>
+<td>BMS Lithium Batt Mode</td>
+<td>Lithium protocol — <code>0</code> is CAN</td>
+</tr>
+<tr>
+<td>SmartLoad Setup</td>
+<td>Auxiliary → Aux port</td>
+</tr>
+<tr>
+<td>Equipment mode / Modbus SN</td>
+<td>Parallel role / Modbus №</td>
+</tr>
+</tbody>
+</table>
+<p>Full table: <strong>page 09</strong>. Labels drift between app versions; the registers don't.</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-theme="default" data-style="section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+" lang="en-US" data-marpit-pagination="48" style="--paginate:true;--theme:default;--style:section {
+  font-size: 25px;
+  padding: 50px 60px;
+}
+section.lead {
+  background: #1e2430;
+  color: #f4f6f8;
+}
+section.lead h1 {
+  color: #ffb547;
+  font-size: 52px;
+  border: none;
+  margin-bottom: 8px;
+}
+section.lead h2 {
+  color: #f4f6f8;
+  font-weight: 400;
+  font-size: 30px;
+  border: none;
+}
+section.lead p, section.lead li { color: #c8cdd6; }
+h1 { font-size: 40px; color: #1e2430; }
+h2 {
+  font-size: 32px;
+  color: #1e2430;
+  border-bottom: 3px solid #ffb547;
+  padding-bottom: 6px;
+}
+table { font-size: 21px; margin: 0 auto; }
+th {
+  background: #1e2430;
+  color: #fff;
+  font-weight: 600;
+}
+code { background: #eef1f5; color: #b3491a; }
+strong { color: #0d5c3a; }
+.warn {
+  background: #fdf0e6;
+  border-left: 6px solid #d9531e;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+.warn strong { color: #a8380f; }
+.note strong { color: #1f4e7a; }
+.note {
+  background: #eef4fb;
+  border-left: 6px solid #2b6cb0;
+  padding: 14px 20px;
+  font-size: 23px;
+  margin: 18px 0;
+}
+footer { color: #8a919b; font-size: 16px; }
+section::after {
+  color: #8a919b;
+  font-size: 16px;
+}
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h2 id="terminology--where-it-bites">Terminology — where it bites</h2>
 <div class="warn">
 <p><strong>Generator on the grid input?</strong> <code>Grid Start %</code> and <code>Grid Start A</code> are the real trigger and<br />
@@ -6813,7 +6965,7 @@ charge-current limit does nothing.</p>
 hardware; believe it over SolarAssistant's checkbox.</p>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -6870,7 +7022,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-" lang="en-US" class="lead" data-marpit-pagination="48" style="--paginate:true;--class:lead;--theme:default;--style:section {
+" lang="en-US" class="lead" data-marpit-pagination="49" style="--paginate:true;--class:lead;--theme:default;--style:section {
   font-size: 25px;
   padding: 50px 60px;
 }
@@ -6927,7 +7079,7 @@ section::after {
   color: #8a919b;
   font-size: 16px;
 }
-;" data-marpit-pagination-total="48" data-size="16:9">
+;" data-marpit-pagination-total="49" data-size="16:9">
 <h1 id="reference">Reference</h1>
 <h2 id="order-pages">Order pages</h2>
 <p><strong>Device (per site)</strong> — <code>solar-assistant.io/shop/products/device_rpi5</code></p>

@@ -257,6 +257,24 @@ A comms cable is not worth working a live 15 kW enclosure.
 
 ---
 
+## Four RJ45 jacks — three are wrong
+
+| Silkscreen | × | What it is |
+|------------|---|------------|
+| `Parallel` | 2 | Inverter-to-inverter link — leave alone |
+| `Modbus RS485` | 1 | External meters. **Not this one** |
+| **`Battery CANBus`** | 1 | **The 2-in-1 port — use this**, right-hand jack |
+
+<div class="warn">
+
+**`Modbus RS485` is a decoy.** You are running an RS485 cable and there is a jack labelled
+`Modbus RS485`. It is the wrong one. SolarAssistant reads the inverter over the RS485 pins
+of the **`Battery CANBus`** jack.
+
+</div>
+
+---
+
 ## Step 1 — Confirm the CAN pins are in use
 
 On each inverter's display, check the battery protocol:
@@ -282,9 +300,14 @@ Check **every** inverter, not just the master — a swapped or re-flashed unit m
                           pins  │    │  pins
                            1-3  │    │  4-5
                          RS485  │    │  CAN
-                                │    └──► existing cable to battery BMS
+                                │    └──► MASTER: cable to battery BMS
+                                │         SLAVE:  empty
                                 └──► new USB-RS485 cable to the Pi
 ```
+
+**Only the master's CAN leg is used.** Slaves get battery state over the parallel link, so
+a slave's jack is empty to begin with. Fit the splitter anyway — identical wiring
+everywhere, and RS485 can never share a socket with CAN.
 
 <div class="warn">
 

@@ -261,6 +261,23 @@ A comms cable is not worth working a live 15 kW enclosure.
 
 ---
 
+## Four RJ45 jacks — three are wrong
+
+| Silkscreen | × | What it is |
+|------------|---|------------|
+| `Parallel` | 2 | Inverter-to-inverter link — leave alone |
+| `Modbus RS485` | 1 | External meters. **Not this one** |
+| **`Battery CANBus`** | 1 | **The splitter goes here**, right-hand jack |
+
+<div class="warn">
+
+**`Modbus RS485` is a decoy.** You are running an RS485 cable and there is a jack labelled
+`Modbus RS485`. It is the wrong one. The splitter goes on **`Battery CANBus`**.
+
+</div>
+
+---
+
 ## Step 1 — Confirm the battery protocol
 
 On each inverter's display, check:
@@ -284,13 +301,14 @@ Check **every** inverter, not just the master — a swapped or re-flashed unit m
    ──────────────────────────│ splitter │
                              └──┬────┬──┘
                          RS485  │    │  CAN
-                                │    └──► existing cable to battery BMS
+                                │    └──► MASTER: cable to battery BMS
+                                │         SLAVE:  empty
                                 └──► new USB-RS485 cable to the Pi
 ```
 
-Unplug the battery cable from the inverter, plug the splitter in its place, then plug the
-battery cable into the splitter's CAN leg. The legs are **not interchangeable** — each is
-labelled.
+**On the master:** unplug the battery cable, fit the splitter, plug the battery cable into
+the splitter's CAN leg. **On a slave:** the jack is already empty — fit the splitter and
+leave the CAN leg empty. The legs are **not interchangeable**; each is labelled.
 
 <div class="warn">
 

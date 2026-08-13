@@ -26,7 +26,7 @@ enclosure — read [00-overview](00-overview.md) first.
 
 ## Presentation deck
 
-There are two [Marp](https://marp.app) decks, both 48 slides, for briefing an installer on
+There are two [Marp](https://marp.app) decks, both 49 slides, for briefing an installer on
 a screen rather than having them read the reference pages. Both close with an *After the
 install* section mirroring [page 08](08-recommended-settings.md) and the key naming pairs
 from [page 09](09-terminology-mapping.md).
