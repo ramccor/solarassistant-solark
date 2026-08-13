@@ -131,10 +131,20 @@ confidently wrong planning information.
 | Temperature Coefficient (Pmax) | Module datasheet |
 | NMOT | Module datasheet |
 
-**Azimuth convention:** `0` normally means **due south**, with negative values east of
-south and positive values west. A stored `0` is therefore a legitimate value for a
-south-facing array, not necessarily a placeholder — verify it against the physical
-array rather than assuming it needs changing.
+**Azimuth convention:** `0` is **due south**, with negative values east of south and
+positive values west; `180`/`−180` is north. Tilt runs `0`–`90`, where `0` is pointing
+straight up and `90` is pointing at the horizon. Both are per
+[SolarAssistant's PV forecast help page](https://solar-assistant.io/help/dashboard/pv_forecast).
+
+A stored `0` is therefore a legitimate value for a south-facing array, not a
+placeholder — verify it against the physical array rather than assuming it needs
+changing.
+
+> **Do not carry an azimuth over from other solar software without converting it.**
+> Compass-bearing tools — pvlib's `surface_azimuth`, PVWatts, Home Assistant's sun
+> integration — put `0` at **north** and south at `180`. SolarAssistant follows the
+> forecast.solar convention instead. Applying a compass bearing here points a
+> south-facing array due north and inverts the forecast curve.
 
 **Typical datasheet ranges,** useful for spotting a value that was never updated:
 temperature coefficient −0.29 to −0.40 %/°C (newer N-type modules sit at the low end,
@@ -156,10 +166,11 @@ identifies the field:
 | Accurate in one season, poor in the other | Tilt |
 | Accurate in the morning, drifts high in afternoon heat | Temperature coefficient |
 
-> **Multi-orientation arrays.** SolarAssistant accepts one tilt and one azimuth. If
-> strings across the site's MPPT inputs face different directions, no single pair can
-> describe the array — pick the dominant orientation and accept that the curve shape
-> will never be exact.
+> **Multi-orientation arrays.** SolarAssistant accepts one tilt and one azimuth, and
+> [does not support strings facing different directions](https://solar-assistant.io/help/dashboard/pv_forecast).
+> Where they do, enter the **average facing direction**, weighted by each group's rated
+> power if the split is uneven. No single pair can describe such an array, so accept
+> that the curve shape will never be exact.
 
 > **Risk: none.** These inputs feed prediction only. They do not affect MPPT behaviour,
 > charge control, or anything the inverters or BMS act on.
