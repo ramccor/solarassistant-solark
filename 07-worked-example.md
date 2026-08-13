@@ -147,3 +147,7 @@ fault or an outage. The grid-related inverter settings recorded above (voltage a
 frequency limits, grid charge, peak shaving) are still present in the inverter's
 configuration, but the grid input is not normally energised. See
 [06 — Troubleshooting](06-troubleshooting.md#things-that-are-not-faults).
+
+---
+
+Next: [08 — Recommended settings](08-recommended-settings.md)

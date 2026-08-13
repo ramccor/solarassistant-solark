@@ -190,3 +190,7 @@ install:
 5. PV forecast inputs
 6. **Connect**, then confirm both devices return to Connected
 7. Re-check [page 05](05-verification.md) — column count, pack count, capacity
+
+---
+
+[Index](README.md)
