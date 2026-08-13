@@ -710,7 +710,13 @@ Only used when capacity **isn't readable** from battery or inverter — so it's 
 | Temp. coefficient, NMOT | Module datasheet |
 | Rated power *(Configuration page)* | **DC nameplate sum** of panels |
 
-**Azimuth `0` normally means due south** — a legitimate value, not necessarily a placeholder. Verify against the array rather than assuming it's wrong.
+**Azimuth `0` = due south**, `−90` east, `90` west, `180`/`−180` north. A stored `0` is legitimate, not a placeholder.
+
+<div class="warn">
+
+**Don't reuse a compass bearing.** pvlib, PVWatts and Home Assistant put `0` at **north**. Applying one here points a south-facing array due north.
+
+</div>
 
 ---
 
@@ -727,7 +733,7 @@ Compare predicted vs actual over two or three clear-sky days:
 
 <div class="warn">
 
-**Multi-orientation arrays:** only one tilt and one azimuth are accepted. If strings face different directions, pick the dominant orientation and accept an imperfect curve.
+**Multi-orientation arrays:** only one tilt and one azimuth are accepted. Enter the **average** facing direction, weighted by rated power if the split is uneven, and accept an imperfect curve.
 
 </div>
 

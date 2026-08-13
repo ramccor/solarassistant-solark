@@ -6220,7 +6220,10 @@ section::after {
 </tr>
 </tbody>
 </table>
-<p><strong>Azimuth <code>0</code> normally means due south</strong> — a legitimate value, not necessarily a placeholder. Verify against the array rather than assuming it's wrong.</p>
+<p><strong>Azimuth <code>0</code> = due south</strong>, <code>−90</code> east, <code>90</code> west, <code>180</code>/<code>−180</code> north. A stored <code>0</code> is legitimate, not a placeholder.</p>
+<div class="warn">
+<p><strong>Don't reuse a compass bearing.</strong> pvlib, PVWatts and Home Assistant put <code>0</code> at <strong>north</strong>. Applying one here points a south-facing array due north.</p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-theme="default" data-style="section {
   font-size: 25px;
@@ -6366,7 +6369,7 @@ section::after {
 </tbody>
 </table>
 <div class="warn">
-<p><strong>Multi-orientation arrays:</strong> only one tilt and one azimuth are accepted. If strings face different directions, pick the dominant orientation and accept an imperfect curve.</p>
+<p><strong>Multi-orientation arrays:</strong> only one tilt and one azimuth are accepted. Enter the <strong>average</strong> facing direction, weighted by rated power if the split is uneven, and accept an imperfect curve.</p>
 </div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-theme="default" data-style="section {
