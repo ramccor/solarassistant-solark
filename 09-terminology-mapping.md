@@ -126,11 +126,14 @@ not an SOC setpoint** — the manual puts generator charging as continuing "unti
 bank accepts 5% of its rated capacity in Amperes," which it equates to roughly 95% SOC.
 On a 1200 Ah bank that is about 60 A of acceptance.
 
-> Note that the manual states this for charging **from a generator**. Where the generator
-> feeds the grid input, charging runs through the grid path, and whether the identical
-> taper rule applies there is not documented. Treat ~95% as indicative. The practical
-> consequence is the same either way: an alert or automation that waits for 100% while on
-> generator power will never fire.
+> **The manual addresses the grid-input case directly.** For a generator connected to the
+> grid input it states the system uses the `Start V` / `Start %` / `A` conditions and stops
+> "charging at 95% SOC," adding: *"Adjustable upper limit if Time of Use is enabled."*
+> Elsewhere it calls the 95% ceiling *"a non-modifiable upper limit unless Time of Use is
+> enabled and programmed."*
+>
+> The practical consequence: an alert or automation that waits for 100% while on generator
+> power will never fire.
 
 The generator-specific settings are inert on such a site. SolarAssistant will still report
 a `Max generator charge current` and generator start/stop capacities, and they will still
@@ -142,6 +145,39 @@ This is also why the table above has no row for `Max generator charge current`. 
 `Gen Charge` toggled **off**, MySolArk hides its dependent generator-charge fields, so
 there is no visible Sol-Ark label to map onto it. Enabling `Gen Charge` to reveal them is
 a real configuration change — it adds a second charging path — not a display toggle.
+
+## Moving the 95% cutoff means enabling Time of Use
+
+The 95% ceiling is the only stop condition, and Time of Use is the only way to move it.
+That makes it a package deal, because enabling TOU also changes when the generator is
+permitted to start at all:
+
+> "If 'Time of Use' (TOU) is enabled, a time to charge from that GRID or GEN source MUST be
+> designated. **'☑ Charge' must be checked on desired time intervals, otherwise the
+> generator will not start automatically even if the Start V or Start % condition has been
+> met.**"
+>
+> — Sol-Ark 15K-2P-N manual, generator and grid charge settings
+
+> **This is a silent failure.** With TOU enabled and `Charge` unticked on an interval, the
+> generator will not auto-start for the length of that interval no matter how far SOC
+> falls. There is no fault code and no alarm — the symptom is simply a generator that does
+> not run, and on a multi-hour interval that is a long time to spend diagnosing it.
+
+If you enable TOU to lower the cutoff:
+
+- **Tick `Charge` on every interval where the generator should be able to start**, not only
+  the ones you expect it to need.
+- **Verify in MySolArk after saving.** SolarAssistant renders `Use timer` as checked either
+  way — see [Where the two disagree](#where-the-two-disagree) — so it cannot confirm that
+  the change took, or that TOU was off beforehand.
+- **The work-mode timer goes live at the same time.** Its stored slot values are inert while
+  TOU is off; once TOU is on they take precedence over the work-mode settings, and anything
+  writing those can be silently overridden.
+
+A low-SOC notification will fire during such a window, but it looks identical to "generator
+running and not keeping up." Knowing which one you are looking at means checking whether the
+generator is actually running, not just how low the battery is.
 
 ---
 
