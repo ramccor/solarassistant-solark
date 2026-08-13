@@ -26,10 +26,11 @@ enclosure — read [00-overview](00-overview.md) first.
 
 ## Presentation deck
 
-`slides.md` is a [Marp](https://marp.app) deck covering the same material as a 46-slide
+`slides.md` is a [Marp](https://marp.app) deck covering the same material as a 48-slide
 installer walkthrough — for briefing an installer on a screen rather than reading the
 reference pages. It closes with an *After the install* section mirroring
-[page 08](08-recommended-settings.md).
+[page 08](08-recommended-settings.md), plus the key naming pairs from
+[page 09](09-terminology-mapping.md).
 
 | File | Use |
 |------|-----|

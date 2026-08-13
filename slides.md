@@ -753,6 +753,50 @@ Look adjustable; already correct on a working install.
 
 ---
 
+## Sol-Ark ↔ SolarAssistant
+
+You will have **both apps open** while commissioning. The labels rarely match:
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| **Limited power to Load** | **Zero export to load** |
+| **Grid Start %** | **Start grid charge capacity** |
+| Grid Start A | Max grid charge current |
+| Batt Shutdown / Low / Restart % | Output shutdown / Stop / Start discharge |
+| BMS Lithium Batt Mode | Lithium protocol — `0` is CAN |
+| SmartLoad Setup | Auxiliary → Aux port |
+| Equipment mode / Modbus SN | Parallel role / Modbus № |
+
+Full table: **page 09**. Labels drift between app versions; the registers don't.
+
+---
+
+## Terminology — where it bites
+
+<div class="warn">
+
+**Generator on the grid input?** `Grid Start %` and `Grid Start A` are the real trigger and
+current limit. The generator settings are **inert** — throttling a generator with a *gen*
+charge-current limit does nothing.
+
+</div>
+
+<div class="warn">
+
+**There is no `Grid Stop %`** — charging ends on current taper (~5% of rated capacity,
+≈95% SOC), not an SOC setpoint. An alert waiting for 100% on generator power never fires.
+
+</div>
+
+<div class="warn">
+
+**Time Of Use vs Use timer** — these can disagree. MySolArk is authoritative for its own
+hardware; believe it over SolarAssistant's checkbox.
+
+</div>
+
+---
+
 <!-- _class: lead -->
 
 # Reference
