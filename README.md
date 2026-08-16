@@ -20,7 +20,7 @@ enclosure — read [00-overview](00-overview.md) first.
 | 04 | [SolarAssistant configuration](04-solarassistant-config.md) | Driver selection and port assignment |
 | 05 | [Verification](05-verification.md) | How to prove every device is actually being read |
 | 06 | [Troubleshooting](06-troubleshooting.md) | Symptom-to-cause table |
-| 07 | [Worked example](07-worked-example.md) | A complete as-built two-inverter, twelve-pack site |
+| 07 | [Worked example](07-worked-example.md) | A complete as-built two-inverter, twelve-pack site, plus a three-inverter order |
 | 08 | [Recommended settings](08-recommended-settings.md) | Optional post-install changes: MQTT/Home Assistant, battery capacity fallback, PV forecast |
 | 09 | [Sol-Ark ↔ SolarAssistant terminology](09-terminology-mapping.md) | What each MySolArk field is called in SolarAssistant, and where the two disagree |
 

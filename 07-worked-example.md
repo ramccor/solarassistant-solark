@@ -6,6 +6,10 @@ A complete as-built record for a real installation, showing how the generic rule
 resolve into concrete quantities and settings. Use it as a template for your own
 baseline ([page 05](05-verification.md#recording-a-baseline)).
 
+A [second, order-only example](#a-second-order-three-inverters-one-stack) follows the
+first order table — a three-inverter grid-tied site, included because it sits exactly on
+the USB port limit.
+
 The screenshots throughout this guide were captured from this installation. Identifying
 values — hostname, site owner, serial numbers, IP addresses, WiFi SSID, site location —
 are shown as `[REDACTED]` in both the images and the tables below, so the whole guide
@@ -34,6 +38,35 @@ Fill the redacted fields in from your own site when you use this as a baseline t
 USB ports required: 2 inverters + 1 stack = **3 of 4**. Fits the Pi directly with one
 port spare — no hub needed. A third inverter would still fit; a fourth would require a
 powered USB hub.
+
+## A second order: three inverters, one stack
+
+A different site — **grid-tied**, three Sol-Ark 15K inverters, one battery stack. Included
+because it lands exactly on the USB port boundary, and because it shows the parts list is
+unchanged by grid configuration.
+
+| Scope | Item | Qty | Line total |
+|-------|------|-----|-----------|
+| Per site | [Device with software (Pi 5)](https://solar-assistant.io/shop/products/device_rpi5) | 1 | $229 |
+| Per inverter | [RJ45 splitter](https://solar-assistant.io/shop/products/deye_rj45_split) | 3 | $42 |
+| Per inverter | [Sol-Ark RS485 cable](https://solar-assistant.io/shop/products/sunsynk_rs485) | 3 | $87 |
+| Per stack | [Pytes console cable](https://solar-assistant.io/shop/products/pytes_rs232) | 1 | $29 |
+| | | | **$387** |
+
+USB ports required: 3 inverters + 1 stack = **4 of 4**. Still fits the Pi directly and
+still needs no hub — but with **no spare port**. Adding a fourth inverter or a second
+battery stack later means a powered USB hub, so it is worth knowing which side of that
+line a site sits on before ordering.
+
+> **Grid-tied changes the inverter configuration, not the parts list.** The splitter still
+> goes on the `Battery CANBus` jack, each inverter still needs its own RS485 cable and USB
+> port, and one console cable still reads the whole stack. What differs is on the inverter:
+> a utility grid profile, tighter trip windows, and a different charging strategy. See
+> [09 — Terminology](09-terminology-mapping.md) for those fields.
+
+> **This is an order, not an as-built record.** The site above is not yet commissioned, so
+> unlike the rest of this page there are no verified readings behind it — only the
+> quantities the [purchase rules](01-hardware-and-ordering.md) produce.
 
 ## Host
 
