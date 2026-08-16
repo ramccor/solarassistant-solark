@@ -15,6 +15,13 @@ which settings are worth changing see [08 — Recommended settings](08-recommend
 > *labels* are not. If a name below is not on your screen, match by position and range
 > rather than assuming the setting is missing.
 
+> **What is screen-dependent.** MySolArk hides whole blocks of fields behind a toggle —
+> `Time Of Use`, `Gen Charge`, and the `Grid Mode` profile all reveal or conceal settings
+> below them. A field being absent usually means the thing that reveals it is switched
+> off, not that your firmware lacks it. The MySolArk columns below are drawn from two
+> Sol-Ark 15K sites, one off-grid and one grid-tied, so that the toggle-dependent screens
+> appear here in both states.
+
 ## The two that catch people out
 
 | MySolArk | SolarAssistant | Why it matters |
@@ -57,6 +64,13 @@ Everything else on this screen — `Grid Mode`, `INV Output voltage`, the whole
 `HF1`–`HF3` / `LF1`–`LF3` trip points with their `-T` timers — is grid-protection
 configuration that SolarAssistant does not read or display. Change it in MySolArk only.
 
+> **`Grid Mode` selects a utility interconnection profile, and it changes what else is on
+> this screen.** An off-grid site may sit on a generic profile; a grid-tied site is
+> normally set to whatever its utility requires — a `SRD-UL1741`-style entry in North
+> America. Selecting one narrows the trip windows and can expose an additional block of
+> frequency-watt fields (`start freq f`, `stop freq f`, `start delay f`, `stop delay f`)
+> that a generic profile hides. None of it reaches SolarAssistant either way.
+
 ## System Work Mode
 
 | MySolArk | SolarAssistant |
@@ -68,6 +82,29 @@ configuration that SolarAssistant does not read or display. Change it in MySolAr
 | Time Of Use | Work mode → Use timer — **see below** |
 
 `Solar sell` and `Zero export power` have no SolarAssistant equivalent.
+
+### What Time Of Use unfolds
+
+Switching `Time Of Use` on expands the screen rather than opening a new one, and the
+structure is worth knowing before you go looking for it:
+
+| MySolArk control | What it is |
+|------------------|------------|
+| `Mon.` … `Sun.` | Day selectors the schedule applies to |
+| **`Charge` → `Time 1`…`Time 6`** | **Which intervals may charge.** A highlighted slot is the manual's "☑ Charge" |
+| `Sell` → `Time 1`…`Time 6` | Which intervals may sell |
+| `Time N` | Start time of slot N |
+| `Power N` (0–14000 W) | Power limit for slot N |
+| `Battery SOC N` (0–100%) | Target SOC for slot N |
+
+The six slots are a **series of start times**, not start/end pairs — each runs until the
+next one begins, so the six together tile the whole day and there is no gap to leave
+unconfigured.
+
+> The `Charge` row is the control behind
+> [the trap described below](#moving-the-95-cutoff-means-enabling-time-of-use). It is easy
+> to read the row as decorative: the slots look like labels rather than toggles, and
+> nothing on screen states that an unhighlighted slot forbids charging.
 
 MySolArk offers two further work modes, `Grid Selling` and `Limited to Home`. Their
 SolarAssistant names are **not mapped here** — only the mode a site is actually running can
@@ -84,6 +121,23 @@ The screen name gives no hint that it holds the generator wiring configuration.
 | GEN connect to Grid input | Auxiliary → Generator connected to grid input |
 
 `AC couple on load side` / `AC couple on grid side` have no SolarAssistant equivalent.
+
+## Basic Setting
+
+Display and housekeeping. Almost none of it maps, but one row matters:
+
+| MySolArk | SolarAssistant |
+|----------|----------------|
+| **`Lock out all changes`** | No equivalent — **but see below** |
+| `Time Syncs` | No equivalent |
+| `ARC Setup`, `BEEP`, `AM/PM`, `Auto Dim` | No equivalent — display and arc-fault behaviour |
+| `Factory Reset` | No equivalent |
+
+> **`Lock out all changes` is the inverter-side write lock.** SolarAssistant has its own
+> write control — the MQTT `Allow setting changes` flag on
+> [page 08](08-recommended-settings.md#1-enable-mqtt-and-home-assistant-discovery) — and
+> the two are independent. If writes are failing from SolarAssistant or Home Assistant,
+> check both. Neither reports the other's state.
 
 ## Advanced Setting
 
