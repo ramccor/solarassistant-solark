@@ -10,6 +10,11 @@ PROMPT.restart
 *~
 .*.print.html
 
-# Per-page PDFs are intermediate; only RUNBOOK.pdf is kept
-cheatsheet-*.pdf
+# build-cheatsheets.py intermediates — only RUNBOOK.pdf is tracked.
+# --keep leaves the per-section PDFs in build/; the HTML is transient; *.tmp is the
+# qpdf/fallback scratch file. Listed individually so nothing slips through.
 build/
+build/**
+cheatsheet-*.pdf
+.cheatsheet-*.print.html
+RUNBOOK.pdf.tmp
