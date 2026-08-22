@@ -4,8 +4,9 @@
     python3 build-cheatsheets.py               # build RUNBOOK.pdf
     python3 build-cheatsheets.py --keep        # also leave the per-page PDFs in build/
 
-Pages are rendered individually with headless Chrome and merged with pdfunite (poppler)
-in the order of ORDER below. Requires python-markdown, Google Chrome, poppler-utils.
+Pages are rendered individually with headless Chrome and merged in the order of ORDER
+below — with qpdf when available (reproducible output), else pdfunite plus an /ID rewrite.
+Requires python-markdown, Google Chrome, poppler-utils (pdfinfo); qpdf recommended.
 """
 import glob, os, re, subprocess, sys, tempfile
 import markdown
@@ -86,6 +87,23 @@ ORDER = [
     "cheatsheet-99-technician-appendix.md",
 ]
 
+def make_reproducible(pdf_path):
+    """Fallback for machines without qpdf: rewrite the random trailer /ID in place with a
+    content hash so identical input gives identical bytes. The trailer follows every
+    object the xref table points to, so its length may change safely. Chrome's dates are
+    already dropped by pdfunite."""
+    import hashlib
+    data = open(pdf_path, "rb").read()
+    m = re.search(rb"/ID \[\((?:[^\\)]|\\.)*\) \((?:[^\\)]|\\.)*\) \]", data, re.S)
+    if not m:
+        m = re.search(rb"/ID \[<[0-9A-Fa-f]+> ?<[0-9A-Fa-f]+>\]", data)
+    if not m:
+        print("  warning: no trailer /ID found; output may not be reproducible")
+        return
+    digest = hashlib.sha256(data[:m.start()] + data[m.end():]).hexdigest()[:32].encode()
+    data = data[:m.start()] + b"/ID [<" + digest + b"> <" + digest + b">]" + data[m.end():]
+    open(pdf_path, "wb").write(data)
+
 def build(md_path, out_dir, extra_md=""):
     name = os.path.basename(md_path)[:-3]
     text = open(md_path, encoding="utf-8").read() + extra_md
@@ -140,7 +158,15 @@ if __name__ == "__main__":
         sys.exit(f"index rendered to {index_n} pages; update INDEX_PAGES in the script")
     parts = [index_pdf] + [pdf for pdf, _ in built]
     final = os.path.join(os.getcwd(), "RUNBOOK.pdf")
-    subprocess.run(["pdfunite", *parts, final], check=True)
+    import shutil
+    if shutil.which("qpdf"):
+        # qpdf merges cleanly and writes a content-derived /ID, so the output is
+        # byte-for-byte reproducible for identical input.
+        subprocess.run(["qpdf", "--empty", "--deterministic-id", "--object-streams=generate",
+                        "--pages", *parts, "--", final], check=True)
+    else:
+        subprocess.run(["pdfunite", *parts, final], check=True)
+        make_reproducible(final)
     pages = subprocess.run(["pdfinfo", final], capture_output=True, text=True).stdout
     total = re.search(r"Pages:\s+(\d+)", pages).group(1)
     print(f"RUNBOOK.pdf: {total} pages")

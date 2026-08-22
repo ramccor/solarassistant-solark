@@ -36,7 +36,8 @@ The printable version is **[`RUNBOOK.pdf`](RUNBOOK.pdf)** — all seven pages me
 order, US letter, with a contents table of page ranges on page 2 so a single section can
 be printed on its own. It is generated, never hand-edited: after changing any
 `cheatsheet-*.md`, run `python3 build-cheatsheets.py` (python-markdown, Google Chrome,
-poppler-utils) and commit both. `--keep` leaves the per-section PDFs in `build/` if you
+poppler-utils, qpdf) and commit both. The build is reproducible — identical markdown
+produces a byte-identical PDF, so a rebuild without content changes leaves the tree clean. `--keep` leaves the per-section PDFs in `build/` if you
 want them locally; they are not tracked. Figures clipped from the source manuals live in
 `images/cheat-*.png`.
 
