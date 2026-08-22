@@ -54,6 +54,8 @@ WIDTHS = {
     "cheat-solark-parallel-capacity.png": 4.4,
     "cheat-solark-parallel-tab.png": 2.4,
     "cheat-array-string-layout-photo.png": 3.4,
+    "cheat-gen-distribution-panel.png": 3.6,
+    "cheat-gen-table22-distribution.png": 4.2,
 }
 DEFAULT_W = 4.0
 # Images that should sit side by side when adjacent in the source.

@@ -76,6 +76,9 @@ its service is done **on the calendar**, not on the hour meter.
 - [ ] **Walk-around inspection** of glass, clamps, cables, boxes, ground wire, and anything growing that will shade the array. *(Procedure 7.)* **You will need:** flashlight, phone for photos.
 - [ ] Over the next two or three sunny days, check the forecast matches the actual solar curve.
 
+![The array: each mount carries two rows of 7 panels; the text box over the lower row explains how they are wired](images/cheat-array-string-layout-photo.png)
+*What you are walking around in April. Each mount has an upper and a lower row of 7 panels.*
+
 ### May
 
 - [ ] **Generator annual service** (the Patriot manual's "every 250 hours or 1 year" items — done yearly here because the hours never get there). Do it in spring so the generator is fresh for winter. *If you have not been shown this, have the dealer or a diesel mechanic do it; the list is for them too.*
@@ -91,6 +94,9 @@ its service is done **on the calendar**, not on the hour meter.
 - [ ] **Every second year, add the "500 hours or 2 years" items:** air-cleaner element, replace the belt, check hoses and clamps and replace any that are soft or cracked, valve clearance, fasteners, engine mounts, starter, charging alternator, water pump, thermostat. **You will need:** air-cleaner element, fan belt (part: see Patriot manual parts list / dealer); the rest is inspection and is dealer/mechanic work.
 - [ ] **Load-test the generator.** From the inverter: ⚙ Settings → Battery Setup → Charge tab → tick **Gen Charge** and **Gen Force** → OK. **You should see** *Gen Signal* within 2 minutes, the generator start, and after 1–3 minutes the batteries charging. Let it run 30 minutes with normal house loads on. Then untick Gen Force, wait for Gen Signal to drop, and confirm the generator controller shows **Auto**. *(Generator runbook.)*
 - [ ] **Mow and clear under the array.** The back of the panels makes power from light off the ground. **You will need:** mower or trimmer.
+
+![Table 37 — the generator manual's service schedule; use the "Every 250 Hrs / 1 Year" column for the May service and add the "Every 500 Hrs / 2 Years" column every second year](images/cheat-gen-table37.png)
+*Patriot O&M manual, Table 37. Tick marks show which column each job falls in.*
 
 ### June
 
@@ -125,6 +131,9 @@ its service is done **on the calendar**, not on the hour meter.
   - The Battery Tender light on the generator battery is **on and steady, not flashing** — compare with the legend printed on the unit (the tender shares a circuit with the inlet on most setups — if the tender is dark, the circuit is dead).
   - If none of these is possible, ask an electrician to confirm the outlet and that it stays powered when the batteries are low.
   **You will need:** plug-in outlet tester.
+
+  ![Generator power-panel door — item 1 (top right) is the X9 NEMA 5-15 inlet that feeds the sump heater and battery charger](images/cheat-gen-distribution-panel.png)
+  *Patriot O&M manual, Figure 21. The 120 V inlet is item **1**, the round socket at the top right of the panel door. Items 2–3 and 6–7 are the generator's output receptacles — not what you are checking.*
 - [ ] Battery Tender light: on and steady (per the legend printed on the unit).
 - [ ] Generator controller shows **Auto**, no fault on the screen, the large mushroom-head E-stop button on the control panel door is pulled out (released).
 - [ ] If last winter's generator runs were too long or too short, adjust the start % or the max run time. *(Generator runbook.)*

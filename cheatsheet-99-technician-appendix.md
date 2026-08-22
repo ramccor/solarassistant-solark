@@ -232,6 +232,9 @@ clearance, water pump and thermostat work is for a diesel mechanic.
 ![Table 37 — General maintenance schedule, both pages](images/cheat-gen-table37.png)
 *Patriot O&M manual, Table 37 (pp. 156–157).*
 
+![Table 22 — Distribution panel: X9 NEMA 5-15 inlet, XC1/XC2 50 A 240 V outputs, XC3/XC5 20 A 120 V outputs, breakers, 400 A stud terminal](images/cheat-gen-table22-distribution.png)
+*Patriot O&M manual, Table 22. Item 1 (X9) is the inlet the sump heater and battery charger depend on.*
+
 Calendar limits apply ("whichever occurs earlier"): the 250 h items are an **annual**
 service and the 500 h items a **two-yearly** one regardless of hours. Log in Table 38.
 After start: watch oil pressure, coolant temperature, battery voltage, frequency (60 Hz)
