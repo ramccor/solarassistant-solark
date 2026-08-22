@@ -8,3 +8,4 @@ PROMPT.restart
 .DS_Store
 *.swp
 *~
+.*.print.html

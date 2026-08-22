@@ -1,153 +1,312 @@
-# Cheat sheet — generator charging on a Sol-Ark 15K-2P
+# Runbook — Generator: starting it, charging the batteries, and when it won't run
 
-Standalone reference; not part of the guide sequence or the slide decks. Sources: Sol-Ark
-*15K Installation Manual* MA-00007 Rev. 13 (§2.5 Integrating a Generator, §3.4 Battery
-Setup, §4 Operation Notes), the installer's customer-training deck (as-delivered version),
-and the Wildcat Patriot / Hyundai *Operation and Maintenance Manual* (20–100 kW mobile
-generating sets) for the generator side. Written for an
-**off-grid site with the prime generator on the GRID input** and two-wire auto-start,
-plus a separate inlet for a portable generator on the **GEN input**.
+**Use this page when** the batteries are getting low and you need the generator to run,
+when the generator should have started on its own but didn't, when it is running but the
+batteries are not filling, or when you need to plug in a portable generator because the
+big one is out of action. It also tells you how to stop the generator safely and what to
+check on it through the year. You do not need any electrical training to follow the
+procedures. The inverters are the two grey Sol-Ark boxes with touch screens; the
+generator is the towable diesel set outside.
 
-## How it behaves when left alone
+> **⚠ STOP — read before touching anything**
+>
+> - **Carbon monoxide kills.** The generator only ever runs outdoors, exhaust pointing away from doors, windows and air intakes. Never run a portable generator in the garage, shop or under a porch — not even with the door open.
+> - **Never put the generator's controller in Manual and walk away.** In Manual it will not stop itself. Put it back in **Auto** before you leave.
+> - **Never stop the generator while the inverters are still pulling power from it.** Turn charging off on the inverter screen first, wait for "Gen Signal" to go out, then stop the generator.
+> - **Do not open the generator enclosure while it could start.** It can start by itself at any moment on a remote signal. Before working inside, press Stop, and have someone unclip the battery cable marked **NEG** or **−** (the one that goes to the engine block or frame; it is usually black) — clips of the Battery Tender off first, then the battery cable.
+> - **Only a 240 V generator works on the portable-generator socket, 12 kW or smaller.** A 120 V camping generator does nothing and may be damaged.
+> - Do not change any setting not named on this page. If a screen looks different from the picture, stop and call.
+
+## What you see → what to do
+
+| What you see | Go to |
+|---|---|
+| Batteries are low (under about 35 %) and the generator has not started | **Procedure 1** — make it run now |
+| You want to top up the batteries before a storm or a cloudy spell | **Procedure 1** |
+| "Gen Signal" shows on the inverter screen but the generator is silent | **Procedure 2** — the generator itself |
+| Generator starts, runs a minute or two, then dies or trips its breaker | **Procedure 3** — it is overloaded |
+| Generator is running but the battery % is not going up (or only crawling) | **Procedure 3** |
+| Generator is running and batteries show 93–95 % — "why hasn't it stopped / why won't it go to 100 %?" | **That is normal.** It stops itself at about 95 %. To stop it sooner, use Procedure 4. |
+| You want to stop the generator | **Procedure 4** — stopping safely |
+| The big generator is broken and you have a portable 240 V generator | **Procedure 5** — portable generator |
+| It is autumn or the first cold night is coming | **Procedure 6** — cold-weather checks |
+| Monday morning the generator ran for 20 minutes on its own | **Normal.** That is its weekly self-test. |
+
+## Procedure 1 — Make the generator run and charge the batteries now
+
+Do this on the **master** inverter's touch screen (the left-hand Sol-Ark, or whichever
+one is marked MASTER). The MySolArk phone app has the same screens.
+
+![Force-charge steps on the Sol-Ark screen — Battery Setup → Charge tab, Gen Charge + Gen Force](images/cheat-solark-force-charge-steps.png)
+*Left: the Charge tab — the two boxes you tick are "Gen Charge" and "Gen Force". Right: the home screen — the words "Gen Signal" appear near the generator symbol once the inverter has called the generator.*
+
+- [ ] **Step 1.** Tap the ⚙ gear icon at the top right of the home screen. You see a menu of big buttons.
+- [ ] **Step 2.** Tap **Battery Setup**. Then tap the **Charge** tab across the top. You see a list of boxes with check marks.
+- [ ] **Step 3.** Tick **Gen Charge** and tick **Gen Force**. Tap **OK**.
+  **If** the screen shows "Grid Charge" ticked as well, leave it ticked — that is normal for the big generator.
+- [ ] **Step 4.** Go back to the home screen (tap the back arrow twice). **Within 2 minutes** the words **"Gen Signal"** appear and you hear the generator crank and start.
+  **If not within 3 minutes →** go to **Procedure 2**.
+- [ ] **Step 5.** Wait **1 to 3 more minutes**. The inverter is checking that the generator's power is steady before it uses it. Then the generator symbol on the screen shows power flowing in, and the battery symbol shows it charging (a negative battery number on SolarAssistant means it is filling).
+  **If the generator runs but nothing flows after 5 minutes →** go to **Procedure 3**.
+- [ ] **Step 6.** Leave it running. **It stops itself at about 95 %** — it will never show 100 % on generator power, and the last few percent are slow. That is by design.
+- [ ] **Step 7. Important:** "Gen Force" keeps the generator running **until you untick it**. When the batteries are where you want them, do **Procedure 4** to stop it properly.
+
+> **⚠ WARNING:** Do not go into the Discharge tab or any other tab to "make it charge more". The only two boxes you need are Gen Charge and Gen Force.
+
+## Procedure 2 — Gen Signal is on but the generator is silent
+
+The inverter has asked; the generator did not answer. The cause is almost always on the
+generator, and you can check it yourself.
+
+![DSE 6110 MKIII front panel — Stop/Reset, Manual, Auto, Alarm Mute/Lamp Test, Start keys; open/close generator breaker keys; fault LED](images/cheat-gen-dse-controller.png)
+*The generator's control box (behind the left rear door of the enclosure). Bottom row of five buttons, left to right: **Stop/Reset** (far left, the O symbol), **Manual** (second, the hand symbol), **Auto** (middle, printed AUTO), **Alarm mute / lamp test** (fourth, the bell symbol), **Start** (far right, the | symbol; it is green). A small lamp beside each mode button lights to show which mode is selected. The lamp in the top-right of the controller marked with a ⚠ (fault) lights when there is a fault.*
+
+- [ ] **Step 1.** Go outside to the generator. Open the **left rear door**. Look at the control box. Read any message on its little screen and write it down (for example "Start Failure", "Low Oil Pressure", "Emergency Stop").
+- [ ] **Step 2.** Check the **Auto** light is on. **If it is not →** press the **Auto** button once. Its light comes on. Within a couple of minutes the generator cranks and starts. **Done — go back to Procedure 1, Step 5.**
+- [ ] **Step 3.** Check the large round **EMERGENCY STOP** mushroom button (the only big push-button on the panel; it is red) on the panel is **pulled out**, not pushed in. **If it was pushed in →** twist and pull it out, then hold the **Stop/Reset** button until the fault message disappears, then press **Auto**.
+- [ ] **Step 4.** If the screen says **"Start Failure"**: the engine tried several times and gave up, and it will **not try again until you reset it**. Before resetting, look for the reason:
+  - [ ] Fuel gauge — is there diesel?
+  - [ ] Is it below freezing and the fuel might have gelled? (see Procedure 6)
+  - [ ] The **Battery Tender** clipped to the generator's starting battery — is its lamp **steady**? Compare the lamp against the printed legend on the tender: the tender only distinguishes states by colour (red vs green), so if you cannot tell them apart, treat **any flashing** as "not yet floated" and **no light at all** as a problem. A fast-flashing lamp or no lamp means the starting battery is probably flat or the clips are off.
+- [ ] **Step 5.** Once you have fixed what you can (added fuel, etc.): **hold the Stop/Reset button** (far left of the bottom row, the O symbol) until the fault message clears, then press **Auto**. Within 2 minutes the generator starts.
+  **If it cranks but still will not start, or you could not find a reason →** stop here and call (see below). Do not keep resetting it.
+- [ ] **Step 6.** If the screen shows a different fault — **Low Oil Pressure**, **High Coolant Temperature**, **Over Speed**, **Under Speed** or anything about the alternator voltage or frequency — **do not reset it**. These mean the engine protected itself. Call for help.
+
+> **⚠ WARNING:** Pressing **Manual** then **Start** will run the generator by hand, but in Manual it will **never stop or start by itself**, and the inverters will not get its power until you close the generator breaker. Only use Manual if the installer tells you to, and **always press Auto before you leave**.
+
+## Procedure 3 — Generator runs but dies, trips, or the batteries don't fill
+
+This means you are asking the generator for more than it can give: charging current plus
+whatever the house is using.
+
+- [ ] **Step 1.** Turn off big loads for now: water heater, electric heat or air conditioning, well pump if you can, clothes dryer, car charger, welder, shop tools.
+- [ ] **Step 2.** If the generator has stopped, go to it. If the screen shows a fault, hold **Stop/Reset** until it clears, press **Auto**. If its main breaker (the big black switch on the panel) has tripped, switch it fully off and back on.
+- [ ] **Step 3.** On the master inverter: ⚙ Settings → **Battery Setup** → **Charge** tab. Find the number next to **Gen** in the **A** (amps) column. Write down what it is now.
+- [ ] **Step 4.** Lower that number by about a quarter (for example 100 → 75). Tap **OK**. Both inverters use this number, so the real charge rate is double what you type.
+- [ ] **Step 5.** Go back to the home screen. Within 1–3 minutes the generator power starts flowing again.
+  **If it trips again →** lower the number once more. **If it trips a third time →** untick Gen Force (Procedure 4) and call for help.
+- [ ] **Step 6.** If the generator has been running for hours and the battery % barely moved, something is using the power as fast as it comes in. Look at the **Load** figure on the home screen. If it is high, find what is on and turn it off. If Load is low and the battery still isn't rising, call for help.
+- [ ] **Step 7.** When things are back to normal, you can put the **Gen A** number back to what you wrote down in Step 3.
+
+> **⚠ WARNING:** Do not raise the Gen A number above what you wrote down in Step 3 to "charge faster". A higher number can overload the generator and trip its breaker under a sudden load.
+
+## Procedure 4 — Stopping the generator safely
+
+Do it in this order. Stopping the generator while the inverters are still drawing from it
+can damage the generator's voltage regulator.
+
+- [ ] **Step 1.** On the master inverter: ⚙ Settings → **Battery Setup** → **Charge** tab.
+- [ ] **Step 2.** Untick **Gen Force**. (Leave **Gen Charge** and **Grid Charge** ticked — they are what let it auto-start next time.) Tap **OK**.
+- [ ] **Step 3.** Go to the home screen. **Wait until "Gen Signal" disappears.** This can take a couple of minutes.
+- [ ] **Step 4.** The generator keeps running a few minutes more by itself to cool down, then stops. You do not need to touch it.
+  **If it is still running 10 minutes after Gen Signal went out →** go to the generator; check its controller is in **Auto**, not Manual. If it is in Manual, press **Stop**, wait for it to stop, then press **Auto**.
+
+## Procedure 5 — Using a portable 240 V generator instead
+
+For when the big generator is out of action. The outdoor **50 A round socket** on the
+wall feeds the inverters through a **different input** from the big generator, so you
+have to change two settings on the inverter and change them back afterwards.
+
+> **⚠ WARNING:** **240 V generators only, 12 kW or smaller.** Run it **outdoors**, well away from the house, exhaust pointing away. Never refuel while it is running or hot.
+
+- [ ] **Step 1.** Put the generator outside. Plug the heavy 240 V cord into the **wall socket first**, then into the generator.
+- [ ] **Step 2.** Start the generator. Let it warm up for **2–5 minutes** with nothing happening on the inverter yet.
+- [ ] **Step 3.** On the master inverter: ⚙ Settings → **Battery Setup** → **Charge** tab.
+- [ ] **Step 4.** **Untick Grid Charge.** **Tick Gen Charge.** (The big generator uses the "Grid" setting; the portable uses "Gen".)
+- [ ] **Step 5.** Set the **Gen A** number to about **half of what the portable generator can give, split between the two inverters**. Use this table, and write down the old number first:
+
+  | Portable generator size | Type this in Gen A |
+  |---|---|
+  | 5 kW | 25 |
+  | 7–8 kW | 35 |
+  | 10 kW | 50 |
+  | 12 kW | 60 |
+
+  (Each inverter charges at this many amps, so the real total is double. 20 A on one inverter is about 1 kW.)
+
+- [ ] **Step 6.** Tick **Gen Force**. Tap **OK**. Go to the home screen. "Gen Signal" appears within 2 minutes; power flows after 1–3 minutes more.
+- [ ] **Step 7.** Keep house loads to a minimum while it charges. **If the portable generator bogs down or trips →** lower Gen A further.
+- [ ] **Step 8. When finished:** untick **Gen Force** and **Gen Charge** → **OK** → wait for "Gen Signal" to go out → stop the portable generator → unplug at the generator, then at the wall.
+- [ ] **Step 9. Put it back:** ⚙ Settings → **Battery Setup** → **Charge** tab → **tick Grid Charge** again and type the old Gen A number back in → **OK**. If you skip this, the big generator will not auto-start next time.
+
+## Procedure 6 — Cold-weather and regular checks (you can do these)
+
+The generator is the one part of the system that needs looking after. Do these checks
+and it will start when you need it.
+
+**You will need (walk-around and cold-weather checks):** flashlight; clean rags; a small
+container (about 1 quart) for the water-separator drain; anti-gel additive for diesel
+(any major brand, dose per the bottle); nitrile gloves; the generator's fuel log.
+
+**Every time you are near it (and always before winter):**
+
+- [ ] **The 120 V cord plugged into the generator** (the ordinary household plug on the power-panel door) is **plugged in and live**. It runs the engine heater that keeps the oil warm below freezing, and the built-in battery charger. Without it the generator may not start on a cold morning.
+- [ ] **Battery Tender lamp** on the starting battery is **steady** (= battery full and maintained; the legend printed on the tender calls this the float state, shown in green). **Flashing** = still charging — wait and check again later; the tender only tells the states apart by colour (red = charging, green = nearly full), so if you cannot see the difference treat any flashing as "not yet floated". **No light at all = problem** — check the clips and the plug.
+- [ ] Fuel level. Enough for a few days of running (it burns about 2–3.6 gallons an hour).
+- [ ] Controller in **Auto**, no fault message, emergency stop pulled out.
+
+**Before each fill from October to March (or any fill that might still be in the tank by October):**
+
+> **⚠ WARNING:** Diesel gels in freezing weather and the generator will not start. **Add anti-gel treatment to every fill** heading into winter. Damage from gelled fuel is **not covered by warranty**.
+
+- [ ] Add the anti-gel at the dose on the bottle.
+- [ ] Open the drain on the fuel/water separator bowl (under the fuel filter) until clean fuel runs, then close it. Do this more often in winter.
+
+**Each time you walk round it (any day it is going to run):**
+
+- [ ] Look under and around it for fuel, oil or coolant drips.
+- [ ] Oil dipstick between the marks; coolant between the marks in the overflow bottle.
+- [ ] Air filter's restriction indicator (the small clear window on the air-cleaner housing) has not popped to show its **warning band** (press the button on top to reset it after a filter change).
+- [ ] Hoses and belts look intact.
+
+**Once a year, and every second year:** it needs a proper service (oil, filters, belt).
+Book the installer or a diesel mechanic — see the Reference section and the
+[maintenance calendar](cheatsheet-maintenance-calendar.md). If you are doing it
+yourself, the parts and fluids list is in the Reference section below; buy them before
+you start so the generator is never left half-serviced.
+
+## Stop and call for help when…
+
+- The generator shows **Low Oil Pressure**, **High Coolant Temperature**, **Over/Under Speed** or any alternator voltage/frequency fault.
+- "Start Failure" comes back after you have reset it once and fixed the obvious things.
+- You smell fuel, see smoke from anywhere but the exhaust, or see a leak.
+- The generator trips its breaker three times even after lowering Gen A.
+- The batteries are below **15 %** and you cannot get the generator to run — the inverters will shut the house down at about 15 %. Turn everything off that you can and call now, not later.
+- Any inverter has its indicator labelled **Alarm** lit and the screen shows a code you do not understand.
+
+## Who to call
+
+| Who | For | Contact |
+|---|---|---|
+| **Installer** — Ernie Williams, Mainstream Green Solutions, Lexington TN | First call for anything on this page | **(731) 697-1665** · Ernie.williams@mainstreamgreensolutions.com · www.mainstreamgreensolutions.com |
+| **Sol-Ark Technical Support** | Inverter screens, codes, settings | 7 days a week (not 24 h) — support@sol-ark.com |
+| **Pytes** | Battery packs | ess_support@pytesgroup.com |
+| **Generator** — Wildcat / Patriot dealer | Engine, controller, service | Number on the generator's nameplate |
+
+---
+
+## Reference — for the technician
+
+Sources: Sol-Ark *15K Installation Manual* MA-00007 Rev. 13 (§2.5 Integrating a
+Generator, §3.4 Battery Setup, §4 Operation Notes), the installer's customer-training deck
+(as-delivered version), and the Wildcat Patriot / Hyundai *Operation and Maintenance
+Manual* (20–100 kW mobile generating sets). Off-grid site: prime generator on the **GRID
+input** with two-wire auto-start from the master's pins 7 & 8; separate 50 A inlet for a
+portable generator on the **GEN input**.
+
+### How it behaves when left alone
 
 | Rule | Source |
 |---|---|
 | Auto-start fires when the bank reaches **Start V or Start %** (one condition, not both) | §3.4 Gen Charge |
-| Charging from the generator **stops at ~95 % SOC** — *"the batteries will charge until the battery bank accepts 5 % of its rated capacity in Amperes"*. It will **never** reach 100 % on generator power; that is normal. | §4 note 6 |
+| Charging from the generator **stops at ~95 % SOC** — *"the batteries will charge until the battery bank accepts 5 % of its rated capacity in Amperes"*. It will **never** reach 100 % on generator power. | §4 note 6 |
 | The 95 % ceiling is *"non-modifiable unless Time of Use is enabled and programmed"* | §4 note 6 |
 | **If TOU is on**, the generator will not auto-start in any interval that does not have **☑ Charge** ticked, *"even if the Start V or Start % condition has been met"* | §2.5 |
 | **Gen/Grid "A" is per inverter.** Multiply by the number of inverters for the current into the bank. | §2.5 |
 | Off-grid: keep the **Gen A and Grid A values equal** *"to avoid logic issues"* | training deck |
 | Max Gen Runtime (firmware 7228+, bottom of the Charge tab) and Gen Down Time can end or block a run regardless of SOC | training deck; §3.4 |
-| Charge rate **tapers above 90 % SOC** (roughly 10 A per pack between 90 and 95 %) — the last 5 % is slow, expensive generator time. Size Max Gen Runtime to reach ~90 %, not 95 %. | training deck |
-| Typical off-grid setpoints from the installer: auto-start **35 %**, Sol-Ark shutdown **15 %**. The gap is deliberate reserve. | training deck |
-| Weekly exercise: **Monday 08:00, 20 min** by default. Disable with `00 \| 00 min`. | §4 note 6; §3.4 |
+| Charge rate **tapers above 90 % SOC** (roughly 10 A per pack between 90 and 95 %). Size Max Gen Runtime to reach ~90 %, not 95 %. | training deck |
+| Installer's off-grid setpoints: auto-start **35 %**, Sol-Ark shutdown **15 %**, Max Gen Runtime **150 min**. | training deck |
+| Weekly exercise: **Monday 08:00, 20 min** by default. Disable with `00 \| 00 min`. Runs only if the DSE is in Auto. | §4 note 6; §3.4 |
 | With a generator on the GRID input, **☑ GEN connect to Grid input** must be set, Grid Mode *General Standard*, Grid Reconnect Time 30 s | §3.4 Grid Charge; §4 note 5 |
 | GEN terminal continuous limit **80 A** — do not exceed | §2.5 |
+| Gen Force is a test function: *"The generator will not provide power during this test if grid power is available"*. Off-grid it runs **until unticked**; it does not stop at 95 %. | §3.4 |
 
-## Force a generator run (charge now, or test auto-start)
+### Adjusting Start % on the fly
 
-On the **master** inverter's screen (or MySolArk):
+Start % is just a setting. On a clear-sky morning with the bank just above Start %,
+lowering it a few points avoids a pointless run; raise it back afterwards. **Never
+routinely below ~10 %** (LFP warranty). The installer's stated emergency floor is
+**11 %**, and only if the generator will not start and the capacity is needed.
 
-1. ⚙ Settings → **Battery Setup** → **Charge** tab
-2. Tick **☑ Gen Charge** and **☑ Gen Force** → **OK**
-3. Back to the home screen. **"Gen Signal" shows within ~2 minutes** — pins 7 & 8 have closed and the generator should be cranking.
-4. The Sol-Ark **qualifies** the supply over the next **1–3 minutes** (voltage and frequency must be stable). Only then does it start drawing power.
-5. Watch the charge current on the battery page or SolarAssistant. It should be ≈ Gen A × number of inverters.
-
-**To stop:** same page → untick **Gen Force** (and Gen Charge if you only wanted a one-off) → **OK** → **wait for Gen Signal to drop** → then let the generator cool down and stop. Do not kill the generator while the Sol-Ark is still drawing from it.
-
-Gen Force is a test function: *"The generator will not provide power during this test if grid power is available"* (§3.4). On an off-grid site it simply runs **until unticked** — it does not stop at 95 %.
-
-## Adjusting the auto-start point on the fly
-
-Start % is just a setting. If it is 06:00 on a clear-sky morning and the bank is sitting
-just above Start %, lowering it a few points avoids a pointless run; raise it back
-afterwards. **Never routinely below ~10 %** (LFP warranty) — the installer's stated
-emergency floor is **11 %**, and only if the generator will not start and you need the
-capacity.
-
-## If the generator stalls, trips, or the Sol-Ark drops it
+### Fault matrix
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Generator bogs / breaker trips shortly after qualifying | Charge current + loads exceed generator rating | Lower **Gen A** (per inverter!) on the Charge tab. Shed heavy loads while charging. |
-| Sol-Ark shows AC briefly then rejects it; **F60** Gen_Volt_or_Fre_Fault | Frequency or voltage drifting outside limits — usually overload pulling it under 60 Hz | Lower Gen A; check the generator's governor; keep loads light until SOC recovers |
-| Gen Signal on but nothing cranks | Two-wire loop open, generator not in AUTO, or wiring on the wrong inverter | Generator must be in auto mode; loop is on the **master's** pins 7 & 8 (N.O. dry contact) |
-| Gen Signal never comes on | TOU interval without ☑ Charge; Gen Down Time still counting from the last run; Max Gen Runtime hit | Check TOU intervals; check Gen Down Time; wait or clear with Gen Force |
-| Charging stops at ~95 % with generator still running | Normal cutoff | Nothing — that is the design. If you need it to stop *sooner*, set an upper limit via TOU. |
-| Generator ran for hours, SOC barely moved | Gen A too low for the bank size, or heavy loads consuming the output | Raise Gen A within generator capacity; check load |
+| Generator bogs / breaker trips shortly after qualifying | Charge current + loads exceed generator rating | Lower **Gen A** (per inverter). Shed heavy loads while charging. |
+| Sol-Ark shows AC briefly then rejects it; **F60** Gen_Volt_or_Fre_Fault | Frequency or voltage outside limits — usually overload pulling it under 60 Hz | Lower Gen A; check governor; keep loads light until SOC recovers |
+| Gen Signal on but nothing cranks | Two-wire loop open, DSE not in Auto, Start Failure latched, E-stop in | DSE to Auto; loop is on the **master's** pins 7 & 8 (N.O. dry contact); reset DSE |
+| Gen Signal never comes on | TOU interval without ☑ Charge; Gen Down Time still counting; Max Gen Runtime hit | Check TOU intervals; check Gen Down Time; clear with Gen Force |
+| Charging stops at ~95 % with generator running | Normal cutoff | Set an upper limit via TOU if it must stop sooner |
+| Generator ran for hours, SOC barely moved | Gen A too low for the bank, or heavy loads | Raise Gen A within generator capacity; check load |
 
 Rule of thumb for Gen A: generator continuous kW × 1000 ÷ ~55 V ÷ number of inverters,
-then back off 10–20 % for loads and governor headroom.
+then back off 10–20 % for loads and governor headroom. Portable: ~50 % of generator
+capacity — e.g. 12 kW → ~6 kW → ~120 A DC total → **60 A per inverter** on two inverters.
+~20 A × ~50 V ≈ 1 kW per inverter.
 
-## Portable 240 V generator on the GEN-input receptacle
-
-For when the prime generator is down. The outdoor 50 A receptacle is wired to the
-Sol-Arks' **GEN** terminals — a different input from the prime generator, so the charge
-logic has to be switched over. **120 V generators will not work**; 240 V only, **12 kW
-maximum** on a 50 A inlet.
-
-1. Place the generator outdoors, clear of intakes — carbon-monoxide risk.
-2. Plug the 240 V cable into the inlet, then into the generator. Start it; let it warm up **2–5 min**. The Sol-Ark should not load it yet.
-3. Battery Setup → Charge: **untick Grid Charge** (the prime-generator path) and **tick ☑ Gen Charge**.
-4. **Lower the charge Amps to about 50 % of the portable generator's capacity.** Amps are DC into the battery: ~20 A × ~50 V ≈ 1 kW per inverter, and the value is **per inverter** — 20 A on the master with two inverters is 40 A into the bank. Example: 12 kW portable → ~6 kW for charging → ~120 A DC total → **60 A per inverter** on a two-inverter system, less if loads are running.
-5. Tick **☑ Gen Force** → OK. Gen Signal within 120 s; qualification 1–3 min.
-6. Keep loads minimal while charging.
-7. Finished: untick Gen Force and Gen Charge → wait for the signal to stop → shut the generator down → unplug at the generator, then at the inlet → **re-tick Grid Charge** and restore the normal Amps so the prime generator works again.
-8. If it overloads or the Sol-Ark stops taking power, you are charging too many amps — reduce on the Charge tab.
-
-## The generator side — Wildcat Patriot 40 kW (DSE 6110 MKIII controller)
+### Generator — Wildcat Patriot 40 kW, DSE 6110 MKIII
 
 **Ratings (single-phase 120/240 V):** 36 kW prime, **150 A** per leg, 50 kVA nameplate.
 Derate 1.5 % per 10 °F above 77 °F. Fuel: **3.6 gal/h full load, 2.8 at 75 %, 2.0 at
-50 %**. Oil change interval 500 h. Control panel is inside the enclosure behind the
-**left rear door**: control-supply switch, DSE controller, MCCB, emergency stop.
+50 %.** Control panel inside the enclosure behind the **left rear door**: control-supply
+switch, DSE controller, MCCB, emergency stop. (The spec page says "oil change 500 h";
+Table 37 puts oil and filter in the 250 h / 1 year column — follow Table 37.)
 
-**For the Sol-Ark to start it, the controller must be in AUTO** (the Sol-Ark manual:
-*"the gen must be in automatic mode"*). In Auto the DSE waits for the remote-start
-contact — the Sol-Ark's pins 7 & 8 — and runs its own start, warm-up, cool-down and stop
-timers. After any manual use, **put it back in Auto** or the next low-SOC event will not
-start it.
+**Auto requirement:** Sol-Ark manual — *"the gen must be in automatic mode"*. In Auto the
+DSE waits for the remote-start contact and runs its own start, warm-up, cool-down and
+stop timers.
 
 | Want to… | On the DSE panel |
 |---|---|
-| Start by hand | **Manual** mode key (LED lights) → **Start** once. Watch it crank. Let it run unloaded ~3 min before closing the MCCB. |
-| Stop by hand | Open the MCCB (unload), let it idle ~5 min, **Stop** once — the controller runs a cool-down timer, then stops. |
-| Clear a fault | **Long-press Stop/Reset** until the displayed fault clears. Fix the cause first — a cleared fault that recurs will re-trip. |
-| Return to auto-start | **Auto** mode key. Confirm the LED. |
-| Switch the controller off entirely | Open the breakers inside the controller panel. |
+| Start by hand | **Manual** (LED lights) → **Start** once. Run unloaded ~3 min before closing the MCCB. |
+| Stop by hand | Open the MCCB, idle ~5 min, **Stop** once — cool-down timer, then stops. |
+| Clear a fault | **Long-press Stop/Reset** until the fault clears. Fix the cause first. |
+| Return to auto-start | **Auto** key; confirm LED. |
+| Switch the controller off | Open the breakers inside the controller panel. |
 
-**Start Failure lockout.** If the engine does not catch after several crank attempts the
-DSE latches *Start Failure* and refuses to crank again until reset. This is the usual
-reason "Gen Signal is on but nothing happens": check the DSE display before touching the
-Sol-Ark. Low fuel, a gelled filter, or a flat starting battery are the common causes.
+**Start Failure** latches after several crank attempts; common causes: low fuel, gelled
+filter, flat starting battery. **Latching safety stops:** low oil pressure, high coolant
+temperature, over/under-speed, E-stop, alternator under/over-voltage or over-frequency —
+the Sol-Ark cannot clear them.
 
-**Safety stops that latch:** low oil pressure, high coolant temperature, over/under-speed,
-E-stop pressed, alternator under/over-voltage or over-frequency. All stay in alarm until
-manually reset on the panel; the Sol-Ark cannot clear them.
+**Starting battery:** kept up by (a) the generator's own automatic charger, fed with the
+**magnetic sump heater** (startable below 32 °F; 1000–1500 W) from the **120 V NEMA 5-15
+inlet** on the power-panel door, and/or (b) the external **Battery Tender Plus 12 V /
+1.25 A** (Deltran 022-0185G-DL-WH), a 4-stage float maintainer, ~20 W, LED (colour-only legend printed on the unit): red steady =
+charging, green flashing = >80 %, green steady = float, red flashing = fault /
+reversed clips. For readers who cannot distinguish red from green: steady = floated,
+flashing = not yet floated, off = fault. Two float chargers on one battery is harmless, but the tender does not
+replace the inlet in winter — the heater needs it. Keep that circuit on a load that stays
+up at low SOC. **Disconnect the tender before the battery negative** when working on it.
 
-**Starting battery.** Two things can keep it up, and at least one must be powered at all
-times — the DSE controller sitting in Auto is a constant small drain, and a flat starting
-battery is the most common reason an auto-start fails on a cold morning:
+**Disabling for work:** battery negative off so it cannot remote-start; untick Gen Force.
 
-- The generator's own **automatic charger**, fed (together with the **magnetic sump
-  heater**, which keeps the engine startable below 32 °F and is the 1000–1500 W draw the
-  installer mentioned) from the **120 V NEMA 5-15 inlet** on the power-panel door.
-- An external **Battery Tender Plus 12 V / 1.25 A** (Deltran 022-0185G-DL-WH) clipped
-  to the battery. It is a 4-stage float maintainer designed to stay connected
-  indefinitely; draw is ~20 W, so it costs nothing to leave on. Its LED tells you the
-  state at a glance: **red** = charging, **green flashing** = >80 % and topping up,
-  **green steady** = float/maintained, **red flashing** = fault or reversed clips. Check
-  it on the daily walk-around.
+### Service intervals (Table 37)
 
-Either device alone will float the battery. If both are powered, two float chargers on
-one battery is harmless, but do not rely on the tender in place of the inlet in winter —
-the sump heater still needs that 120 V feed. Keep whichever circuit feeds them on a load
-that stays up at low SOC, and budget the heater into winter overnight load.
+**You will need — annual service (250 h / 1 year column):**
 
-**Disconnect the tender (or open the inlet breaker) before disconnecting the battery**
-for work — clips first, then the battery negative.
+- Engine oil: **SAE 15W-40, API CI-4 or higher**, from sealed containers. Capacity for the
+  40 kW set (HDI DM03PG engine): **2.5 US gal (9.7 L)** per the specification table; the
+  engine data page states 13.3 qt (12.6 L) — buy **3.5 gal** and fill to the dipstick mark.
+- Lube-oil filter (spin-on) — part: see Patriot manual parts list / dealer.
+- Primary fuel filter with water separator (1.0 L single-bowl spin-on) — part: see Patriot manual parts list / dealer.
+- Secondary fuel filter — part: see Patriot manual parts list / dealer.
+- Drain pan (≥4 gal), oil-filter wrench, socket set, torque wrench, funnel, rags, nitrile gloves, sealed container for waste oil.
+- Coolant for top-up: **long-life (LLC/ELC) ethylene-glycol, 50/50 with demineralised water** — never tap water, never mix with conventional coolant (the older type usually dyed green).
+- Anti-gel additive; fresh **ultra-low-sulfur diesel** only.
 
-**Daily / before-run checks (manual Table 37):** walk-around for fuel, oil and coolant
-leaks; air-cleaner restriction indicator; oil level; coolant level; **drain the fuel/water
-separator**; hoses and clamps. After start: watch oil pressure, coolant temperature,
-battery voltage, frequency (60 Hz) and that the load is within rating.
+**You will need — two-year service (500 h / 2 years column), in addition:** air-cleaner
+element, fan/alternator V-belt, radiator and heater hoses and clamps as found worn, feeler
+gauges for valve clearance — parts: see Patriot manual parts list / dealer. Valve
+clearance, water pump and thermostat work is for a diesel mechanic.
 
-**Service intervals:** oil and filter at 500 h (first change at 50 h); fuel primary and
-secondary filters, belt check and centrifugal filter clean at the 250 h / 1 year column
-of Table 37; air-cleaner element and belt replacement at 500 h / 2 years; valve
-clearance, mounts, starter, water pump and thermostat at 1500 h. Hours accrue slowly on
-an off-grid set — **the calendar limits apply**, so plan an annual service regardless of
-hours. Log it in the manual's Table 38.
+**You will need — walk-around:** flashlight, rags, ~1 qt container for the separator drain.
 
-**Cold weather:** **anti-gel in every diesel fill** unless the tank will certainly be
-empty before freezing weather; fuel-pump damage from gelled fuel is not covered by
-warranty. Drain the water separator more often. Keep the sump heater powered.
+| When | Items |
+|---|---|
+| Daily / before each run | Walk-around; air-cleaner restriction indicator; oil level; coolant level; drain water separator; hoses and clamps; radiator fins |
+| First 50 h (new engine) | Fuel primary + secondary filters; belt check/adjust; **engine oil + oil filter** |
+| **Every 250 h or 1 year** | Fuel primary + secondary filters; belt check/adjust; **engine oil + oil filter**; centrifugal filter clean; CCV pipe drain (4K1080TA1 engine only) |
+| **Every 500 h or 2 years** | Air-cleaner element; belt replacement; hoses/clamps replace as needed; valve clearance; fasteners; engine mounts; starter; charging alternator; water pump; thermostat |
+| Every 1500 h | *(no items listed for these engines)* |
 
-**Disabling it for work:** disconnect the battery negative so it cannot start from a
-remote-start command while someone is inside the enclosure. Untick Gen Force on the
-Sol-Ark as well.
+![Table 37 — General maintenance schedule, both pages](images/cheat-gen-table37.png)
+*Patriot O&M manual, Table 37 (pp. 156–157).*
 
-**Weekly exercise** (Sol-Ark default Monday 08:00, 20 min) keeps the starting battery
-and fuel system healthy; leave it enabled. It only runs if the DSE is in Auto.
+Calendar limits apply ("whichever occurs earlier"): the 250 h items are an **annual**
+service and the 500 h items a **two-yearly** one regardless of hours. Log in Table 38.
+After start: watch oil pressure, coolant temperature, battery voltage, frequency (60 Hz)
+and load within rating. **Cold weather:** anti-gel in every fill unless the tank will be
+empty before freezing; gelled-fuel pump damage is not warranted; drain the separator
+more often; keep the sump heater powered.

@@ -24,17 +24,24 @@ enclosure — read [00-overview](00-overview.md) first.
 | 08 | [Recommended settings](08-recommended-settings.md) | Optional post-install changes: MQTT/Home Assistant, battery capacity fallback, PV forecast |
 | 09 | [Sol-Ark ↔ SolarAssistant terminology](09-terminology-mapping.md) | What each MySolArk field is called in SolarAssistant, and where the two disagree |
 
-## Standalone cheat sheets
+## End-user runbook (standalone)
 
-Not part of the page sequence or the decks; print and keep near the inverters.
+Not part of the page sequence or the decks. Written for someone with no electrical
+background: each page opens with the hard safety rules, a "what you see → what to do"
+table, and numbered procedures with "if not →" branches; technician detail is kept in a
+Reference section at the end of each page. Lights and buttons are named by printed label
+and behaviour, never by color alone. Each page has a US-letter PDF alongside it
+(`cheatsheet-<name>.pdf`), built with `python3 build-cheatsheets.py` (python-markdown +
+headless Chrome). Figures clipped from the source manuals live in `images/cheat-*.png`.
 
-| Sheet | What it covers |
-|-------|----------------|
-| [Parallel inverter failure](cheatsheet-inverter-failure.md) | Slave failure and master failure on a Sol-Ark 15K-2P parallel system — fault codes, isolation, promoting a slave, power-cycle order |
-| [Generator charging](cheatsheet-generator.md) | Auto-start rules, the 95 % cutoff, forcing a run, overload troubleshooting, portable-generator procedure |
-| [Low battery and recovery](cheatsheet-low-battery.md) | Sol-Ark Shutdown vs BMS cutoff, what to do at yellow and red, waking a sleeping pack, setpoints to verify |
-| [Array maintenance](cheatsheet-array-maintenance.md) | Annual wash, snow and ice, seasonal tilt and the forecast field, inspection checklist |
-| [Maintenance calendar](cheatsheet-maintenance-calendar.md) | Month-by-month schedule tying together the array, battery and generator tasks, with the spring and autumn changeovers |
+| Page | What it covers |
+|------|----------------|
+| [Start here](cheatsheet-00-runbook-index.md) | Symptom index across all pages, who to call, where things are |
+| [Batteries](cheatsheet-low-battery.md) | Reading pack lights, low battery, power out, a pack that shut itself off, safe power-up order |
+| [Generator](cheatsheet-generator.md) | Forcing a run, won't start, overload, stopping, portable generator on the GEN inlet, cold-weather checks, service parts |
+| [Inverter failed](cheatsheet-inverter-failure.md) | Which one failed, ordered restart, running on one inverter, master failure and promotion (installer-gated) |
+| [Solar panels](cheatsheet-array-maintenance.md) | Wash, snow/ice, seasonal tilt, MPPT at 0 V, panel replacement, storm check |
+| [Maintenance calendar](cheatsheet-maintenance-calendar.md) | Month-by-month tasks with parts lists, the mid-October generator inlet check, stock to keep on hand |
 
 ## Site-specific notes (not for distribution)
 

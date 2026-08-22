@@ -13,12 +13,13 @@
 | Location | ~35.65° N, 88.13° W (west Tennessee) |
 | Site type | Off-grid; **Wildcat Patriot 40 kW** (Hyundai, EPA Tier 4F, DSE 6110 MKIII controller) prime-power towable diesel — **36 kW / 150 A at 120/240 V single-phase**, which is the installer's "35 kW" — on the GRID inputs via a colour-coded wall box; two-wire start on the master's pins 7 & 8. 50 A outdoor receptacle for a portable 240 V generator (≤12 kW) on the **GEN** inputs |
 | Inverters | 2 × Sol-Ark 15K-2P in parallel |
-| Battery | 12 × Pytes V5 = 61.4 kWh |
+| Battery | 12 × Pytes V5 (51.2 V / 100 Ah / 5.12 kWh each) = 61.4 kWh; 75 A recommended / 100 A max per pack → **900 A / 1 200 A bank**; master pack carries DIP address + CAN to the Sol-Ark master |
+| Sol-Ark battery settings (Pytes guide) | `Use Batt % Charged`, `BMS Lithium Batt = 00`, `☑ Activate Battery`; 4/0 cable busbar → inverter |
 | Array | 84 × Trina TSM-NE09RC.05 **410 W** bifacial, black-on-black = **34.44 kW DC** |
 | Strings | 42 panels per inverter; 14 per MPPT across 3 MPPTs (2 strings × 7 in series) |
 | Racking | 3 × **Sinclair Designs adjustable-tilt** ground mounts, currently **32.1°**, azimuth **0°** (due south); clamp torque 20 ft-lb |
 | PV disconnects | Midnite combiner at the end of each array (one 600 V breaker per 14 panels) → wall disconnect → inverter PV switch |
-| Installer | Mainstream Green Solutions, Lexington TN |
+| Installer | **Ernie Williams**, Mainstream Green Solutions (NABCEP Certified PV Installation Professional), PO Box 411, Lexington TN 38351 — (731) 697-1665 — Ernie.williams@mainstreamgreensolutions.com — www.mainstreamgreensolutions.com |
 | DC:AC | 1.15 |
 
 ## Module datasheet — 410 W column
