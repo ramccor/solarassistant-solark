@@ -28,8 +28,8 @@ enclosure — read [00-overview](00-overview.md) first.
 
 Not part of the page sequence or the decks. Written for someone with no electrical
 background: each page opens with the hard safety rules, a "what you see → what to do"
-table, and numbered procedures with "if not →" branches; technician detail is kept in a
-Reference section at the end of each page. Lights and buttons are named by printed label
+table, and numbered procedures with "if not →" branches; technician detail is split out into
+a separate appendix, with a pointer at the end of each page. Lights and buttons are named by printed label
 and behaviour, never by color alone. Each page has a US-letter PDF alongside it
 (`cheatsheet-<name>.pdf`), built with `python3 build-cheatsheets.py` (python-markdown +
 headless Chrome). Figures clipped from the source manuals live in `images/cheat-*.png`.
@@ -42,6 +42,7 @@ headless Chrome). Figures clipped from the source manuals live in `images/cheat-
 | [Inverter failed](cheatsheet-inverter-failure.md) | Which one failed, ordered restart, running on one inverter, master failure and promotion (installer-gated) |
 | [Solar panels](cheatsheet-array-maintenance.md) | Wash, snow/ice, seasonal tilt, MPPT at 0 V, panel replacement, storm check |
 | [Maintenance calendar](cheatsheet-maintenance-calendar.md) | Month-by-month tasks with parts lists, the mid-October generator inlet check, stock to keep on hand |
+| [Technician appendix](cheatsheet-99-technician-appendix.md) | The reference material behind each page — setpoints, fault codes, specs, service parts, technician-only procedures — split out so the end-user binder stays thin |
 
 ## Site-specific notes (not for distribution)
 

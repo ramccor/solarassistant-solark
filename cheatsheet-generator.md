@@ -160,9 +160,9 @@ container (about 1 quart) for the water-separator drain; anti-gel additive for d
 - [ ] Hoses and belts look intact.
 
 **Once a year, and every second year:** it needs a proper service (oil, filters, belt).
-Book the installer or a diesel mechanic — see the Reference section and the
+Book the installer or a diesel mechanic — see the Technician appendix (section B) and the
 [maintenance calendar](cheatsheet-maintenance-calendar.md). If you are doing it
-yourself, the parts and fluids list is in the Reference section below; buy them before
+yourself, the parts and fluids list is in the Technician appendix (section B); buy them before
 you start so the generator is never left half-serviced.
 
 ## Stop and call for help when…
@@ -185,128 +185,8 @@ you start so the generator is never left half-serviced.
 
 ---
 
-## Reference — for the technician
+## Technical detail
 
-Sources: Sol-Ark *15K Installation Manual* MA-00007 Rev. 13 (§2.5 Integrating a
-Generator, §3.4 Battery Setup, §4 Operation Notes), the installer's customer-training deck
-(as-delivered version), and the Wildcat Patriot / Hyundai *Operation and Maintenance
-Manual* (20–100 kW mobile generating sets). Off-grid site: prime generator on the **GRID
-input** with two-wire auto-start from the master's pins 7 & 8; separate 50 A inlet for a
-portable generator on the **GEN input**.
-
-### How it behaves when left alone
-
-| Rule | Source |
-|---|---|
-| Auto-start fires when the bank reaches **Start V or Start %** (one condition, not both) | §3.4 Gen Charge |
-| Charging from the generator **stops at ~95 % SOC** — *"the batteries will charge until the battery bank accepts 5 % of its rated capacity in Amperes"*. It will **never** reach 100 % on generator power. | §4 note 6 |
-| The 95 % ceiling is *"non-modifiable unless Time of Use is enabled and programmed"* | §4 note 6 |
-| **If TOU is on**, the generator will not auto-start in any interval that does not have **☑ Charge** ticked, *"even if the Start V or Start % condition has been met"* | §2.5 |
-| **Gen/Grid "A" is per inverter.** Multiply by the number of inverters for the current into the bank. | §2.5 |
-| Off-grid: keep the **Gen A and Grid A values equal** *"to avoid logic issues"* | training deck |
-| Max Gen Runtime (firmware 7228+, bottom of the Charge tab) and Gen Down Time can end or block a run regardless of SOC | training deck; §3.4 |
-| Charge rate **tapers above 90 % SOC** (roughly 10 A per pack between 90 and 95 %). Size Max Gen Runtime to reach ~90 %, not 95 %. | training deck |
-| Installer's off-grid setpoints: auto-start **35 %**, Sol-Ark shutdown **15 %**, Max Gen Runtime **150 min**. | training deck |
-| Weekly exercise: **Monday 08:00, 20 min** by default. Disable with `00 \| 00 min`. Runs only if the DSE is in Auto. | §4 note 6; §3.4 |
-| With a generator on the GRID input, **☑ GEN connect to Grid input** must be set, Grid Mode *General Standard*, Grid Reconnect Time 30 s | §3.4 Grid Charge; §4 note 5 |
-| GEN terminal continuous limit **80 A** — do not exceed | §2.5 |
-| Gen Force is a test function: *"The generator will not provide power during this test if grid power is available"*. Off-grid it runs **until unticked**; it does not stop at 95 %. | §3.4 |
-
-### Adjusting Start % on the fly
-
-Start % is just a setting. On a clear-sky morning with the bank just above Start %,
-lowering it a few points avoids a pointless run; raise it back afterwards. **Never
-routinely below ~10 %** (LFP warranty). The installer's stated emergency floor is
-**11 %**, and only if the generator will not start and the capacity is needed.
-
-### Fault matrix
-
-| Symptom | Cause | Fix |
-|---|---|---|
-| Generator bogs / breaker trips shortly after qualifying | Charge current + loads exceed generator rating | Lower **Gen A** (per inverter). Shed heavy loads while charging. |
-| Sol-Ark shows AC briefly then rejects it; **F60** Gen_Volt_or_Fre_Fault | Frequency or voltage outside limits — usually overload pulling it under 60 Hz | Lower Gen A; check governor; keep loads light until SOC recovers |
-| Gen Signal on but nothing cranks | Two-wire loop open, DSE not in Auto, Start Failure latched, E-stop in | DSE to Auto; loop is on the **master's** pins 7 & 8 (N.O. dry contact); reset DSE |
-| Gen Signal never comes on | TOU interval without ☑ Charge; Gen Down Time still counting; Max Gen Runtime hit | Check TOU intervals; check Gen Down Time; clear with Gen Force |
-| Charging stops at ~95 % with generator running | Normal cutoff | Set an upper limit via TOU if it must stop sooner |
-| Generator ran for hours, SOC barely moved | Gen A too low for the bank, or heavy loads | Raise Gen A within generator capacity; check load |
-
-Rule of thumb for Gen A: generator continuous kW × 1000 ÷ ~55 V ÷ number of inverters,
-then back off 10–20 % for loads and governor headroom. Portable: ~50 % of generator
-capacity — e.g. 12 kW → ~6 kW → ~120 A DC total → **60 A per inverter** on two inverters.
-~20 A × ~50 V ≈ 1 kW per inverter.
-
-### Generator — Wildcat Patriot 40 kW, DSE 6110 MKIII
-
-**Ratings (single-phase 120/240 V):** 36 kW prime, **150 A** per leg, 50 kVA nameplate.
-Derate 1.5 % per 10 °F above 77 °F. Fuel: **3.6 gal/h full load, 2.8 at 75 %, 2.0 at
-50 %.** Control panel inside the enclosure behind the **left rear door**: control-supply
-switch, DSE controller, MCCB, emergency stop. (The spec page says "oil change 500 h";
-Table 37 puts oil and filter in the 250 h / 1 year column — follow Table 37.)
-
-**Auto requirement:** Sol-Ark manual — *"the gen must be in automatic mode"*. In Auto the
-DSE waits for the remote-start contact and runs its own start, warm-up, cool-down and
-stop timers.
-
-| Want to… | On the DSE panel |
-|---|---|
-| Start by hand | **Manual** (LED lights) → **Start** once. Run unloaded ~3 min before closing the MCCB. |
-| Stop by hand | Open the MCCB, idle ~5 min, **Stop** once — cool-down timer, then stops. |
-| Clear a fault | **Long-press Stop/Reset** until the fault clears. Fix the cause first. |
-| Return to auto-start | **Auto** key; confirm LED. |
-| Switch the controller off | Open the breakers inside the controller panel. |
-
-**Start Failure** latches after several crank attempts; common causes: low fuel, gelled
-filter, flat starting battery. **Latching safety stops:** low oil pressure, high coolant
-temperature, over/under-speed, E-stop, alternator under/over-voltage or over-frequency —
-the Sol-Ark cannot clear them.
-
-**Starting battery:** kept up by (a) the generator's own automatic charger, fed with the
-**magnetic sump heater** (startable below 32 °F; 1000–1500 W) from the **120 V NEMA 5-15
-inlet** on the power-panel door, and/or (b) the external **Battery Tender Plus 12 V /
-1.25 A** (Deltran 022-0185G-DL-WH), a 4-stage float maintainer, ~20 W, LED (colour-only legend printed on the unit): red steady =
-charging, green flashing = >80 %, green steady = float, red flashing = fault /
-reversed clips. For readers who cannot distinguish red from green: steady = floated,
-flashing = not yet floated, off = fault. Two float chargers on one battery is harmless, but the tender does not
-replace the inlet in winter — the heater needs it. Keep that circuit on a load that stays
-up at low SOC. **Disconnect the tender before the battery negative** when working on it.
-
-**Disabling for work:** battery negative off so it cannot remote-start; untick Gen Force.
-
-### Service intervals (Table 37)
-
-**You will need — annual service (250 h / 1 year column):**
-
-- Engine oil: **SAE 15W-40, API CI-4 or higher**, from sealed containers. Capacity for the
-  40 kW set (HDI DM03PG engine): **2.5 US gal (9.7 L)** per the specification table; the
-  engine data page states 13.3 qt (12.6 L) — buy **3.5 gal** and fill to the dipstick mark.
-- Lube-oil filter (spin-on) — part: see Patriot manual parts list / dealer.
-- Primary fuel filter with water separator (1.0 L single-bowl spin-on) — part: see Patriot manual parts list / dealer.
-- Secondary fuel filter — part: see Patriot manual parts list / dealer.
-- Drain pan (≥4 gal), oil-filter wrench, socket set, torque wrench, funnel, rags, nitrile gloves, sealed container for waste oil.
-- Coolant for top-up: **long-life (LLC/ELC) ethylene-glycol, 50/50 with demineralised water** — never tap water, never mix with conventional coolant (the older type usually dyed green).
-- Anti-gel additive; fresh **ultra-low-sulfur diesel** only.
-
-**You will need — two-year service (500 h / 2 years column), in addition:** air-cleaner
-element, fan/alternator V-belt, radiator and heater hoses and clamps as found worn, feeler
-gauges for valve clearance — parts: see Patriot manual parts list / dealer. Valve
-clearance, water pump and thermostat work is for a diesel mechanic.
-
-**You will need — walk-around:** flashlight, rags, ~1 qt container for the separator drain.
-
-| When | Items |
-|---|---|
-| Daily / before each run | Walk-around; air-cleaner restriction indicator; oil level; coolant level; drain water separator; hoses and clamps; radiator fins |
-| First 50 h (new engine) | Fuel primary + secondary filters; belt check/adjust; **engine oil + oil filter** |
-| **Every 250 h or 1 year** | Fuel primary + secondary filters; belt check/adjust; **engine oil + oil filter**; centrifugal filter clean; CCV pipe drain (4K1080TA1 engine only) |
-| **Every 500 h or 2 years** | Air-cleaner element; belt replacement; hoses/clamps replace as needed; valve clearance; fasteners; engine mounts; starter; charging alternator; water pump; thermostat |
-| Every 1500 h | *(no items listed for these engines)* |
-
-![Table 37 — General maintenance schedule, both pages](images/cheat-gen-table37.png)
-*Patriot O&M manual, Table 37 (pp. 156–157).*
-
-Calendar limits apply ("whichever occurs earlier"): the 250 h items are an **annual**
-service and the 500 h items a **two-yearly** one regardless of hours. Log in Table 38.
-After start: watch oil pressure, coolant temperature, battery voltage, frequency (60 Hz)
-and load within rating. **Cold weather:** anti-gel in every fill unless the tank will be
-empty before freezing; gelled-fuel pump damage is not warranted; drain the separator
-more often; keep the sump heater powered.
+The tables, specifications, manual quotations and technician-only procedures that back
+this page are in the **Technician appendix, section B** (`cheatsheet-99-technician-appendix`).
+You do not need it to follow the steps above.

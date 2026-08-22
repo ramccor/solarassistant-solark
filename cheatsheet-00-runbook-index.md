@@ -47,6 +47,7 @@ and call for help.
 | Inverter failed — one inverter down, house still has some power | `cheatsheet-inverter-failure` |
 | Solar panels — cleaning, snow, tilt, replacing a panel | `cheatsheet-array-maintenance` |
 | Maintenance calendar — each month, and what to keep on hand | `cheatsheet-maintenance-calendar` |
+| Technician appendix — reference tables, specs and technician-only procedures (not needed by end users) | `cheatsheet-99-technician-appendix` |
 
 ## Who to call
 

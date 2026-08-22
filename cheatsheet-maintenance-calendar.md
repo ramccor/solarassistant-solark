@@ -194,34 +194,8 @@ inverters are, labelled.
 | Sol-Ark Technical Support (inverters) | 7 days a week, not 24 h — support@sol-ark.com |
 | Generator service | Wildcat / Patriot dealer — number on the generator's nameplate |
 
-## Reference — for the technician
+## Technical detail
 
-**Sources:** Wildcat Patriot / Hyundai O&M manual Table 37 (general maintenance
-schedule) and Table 38 (log); Sol-Ark *15K Installation Manual* Rev. 13 §4 (weekly
-generator exercise, default Monday 08:00 for 20 min); installer's training deck; tilt
-analysis on the site page.
-
-**Table 37 mapping.** Daily: walk-around, air-cleaner restriction indicator, oil level,
-coolant level, water-separator drain, hoses/clamps, radiator fins. First 50 h: fuel
-filters, belt adjust, oil + filter. Every 250 h / 1 yr (whichever earlier): fuel primary
-+ secondary filters, belt adjust, oil + oil filter, centrifugal filter clean, CCV pipe
-drain (4K1080TA1 engine only). Every 500 h / 2 yr: air-cleaner element, belt replace,
-hoses/clamps, valve clearance, fasteners, mounts, starter, charging alternator, water
-pump, thermostat. 1500 h column: no items for these engines. The spec page's "oil change
-500 h" is superseded by Table 37's 250 h / 1 yr column. Engine for the 40 kW set: HDI
-DM03PG, oil capacity 2.5 gal / 9.7 L, fuel 3.6 / 2.8 / 2.0 gal/h at 100 / 75 / 50 % load.
-
-**Tilt schedule.** Two-switch: ≈15° early April, ≈55° early October (rack maximum if
-lower). SolarAssistant `Configuration → Advanced → Solar PV → Tilt` must follow every
-move (Disconnect → edit → Save → Connect). Expected ~+4.5 % annual front-side yield vs
-fixed 32°, concentrated Nov–Jan.
-
-**Generator cold-weather dependencies.** NEMA 5-15 120 V inlet on the power-panel door
-feeds the magnetic sump heater (active near/below 32 °F, 1000–1500 W) and the built-in
-automatic starting-battery charger. External Battery Tender Plus 12 V / 1.25 A (Deltran
-022-0185G-DL-WH) on the starting battery as a second maintainer. Anti-gel required;
-fuel-pump damage from gelled fuel is not warranted. Initial fill 115 gal, treated.
-
-**Warranty horizons.** Pytes 10 yr; Sol-Ark 10 yr (includes lightning damage on the
-EMP-hardened units); panels 25 yr to ≥80 %; battery warranty excludes routine discharge
-below 10 %.
+The tables, specifications, manual quotations and technician-only procedures that back
+this page are in the **Technician appendix, section E** (`cheatsheet-99-technician-appendix`).
+You do not need it to follow the steps above.

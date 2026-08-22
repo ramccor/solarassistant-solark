@@ -215,32 +215,8 @@ MPPT — use it to match the reading to the right combiner breaker.
 | Installer — Ernie Williams, Mainstream Green Solutions, Lexington TN | (731) 697-1665 · Ernie.williams@mainstreamgreensolutions.com · www.mainstreamgreensolutions.com |
 | Sol-Ark Technical Support (inverters) | 7 days a week, not 24 h — support@sol-ark.com |
 
-## Reference — for the technician
+## Technical detail
 
-**Sources:** installer's customer-training deck (as-delivered version); page 08 PV-forecast
-notes; tilt analysis on the site page.
-
-**Seasonal tilt.** Two-switch schedule, PVGIS-derived: summer latitude −15° to −20° (not
-below ~15° on a bifacial ground mount, to keep rear-side gain and rain shedding), winter
-latitude +15° to +20° or the rack's maximum. For this site: ≈15° early April, ≈55° early
-October; ~+4.5 % front-side annual yield vs fixed 32°, Nov–Jan each up ~10–12 %. The
-SolarAssistant forecast has no seasonal model; `Configuration → Advanced → Solar PV →
-Tilt` must be updated on every move (Disconnect on the Devices panel → edit → Save →
-Connect). Re-torque rack hardware after each move; recheck before the first winter storm.
-
-**Array wiring.** Strings of 7 in series along the top and bottom of each mount; top
-and bottom strings paralleled at the ends; one 600 V DC breaker per 14-panel group in a
-Midnite combiner box at the end of each array. Three series switch points: combiner
-breaker → exterior wall disconnect → inverter PV disconnect. All strings are equal, so on
-a clear day all MPPTs should read alike; 0 V = switch point open; low = shade, soiling or
-a failed module in that group. The single-line drawing is engraved on the exterior wall.
-
-**Panel replacement.** Module: Trina TSM-NE09RC.05 410 W (Voc 50.1 V, 7 in series ≈
-350 V, up to ~390 V cold). Sinclair Designs mid- and end-clamp torque 20 ft-lb. MC4
-connectors: Stäubli preferred; wire-nut joints are emergency-only.
-
-**Bifacial note.** 65 ±10 % bifaciality; keep the ground under the array mowed and
-light-coloured; do not flatten below ~15° in summer.
-
-**Storm.** F63 Arc_Fault after lightning is frequently spurious; clear manually
-(*Clear Arc Fault*) and watch for recurrence, which indicates a real connector fault.
+The tables, specifications, manual quotations and technician-only procedures that back
+this page are in the **Technician appendix, section D** (`cheatsheet-99-technician-appendix`).
+You do not need it to follow the steps above.
