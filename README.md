@@ -34,6 +34,7 @@ Not part of the page sequence or the decks; print and keep near the inverters.
 | [Generator charging](cheatsheet-generator.md) | Auto-start rules, the 95 % cutoff, forcing a run, overload troubleshooting, portable-generator procedure |
 | [Low battery and recovery](cheatsheet-low-battery.md) | Sol-Ark Shutdown vs BMS cutoff, what to do at yellow and red, waking a sleeping pack, setpoints to verify |
 | [Array maintenance](cheatsheet-array-maintenance.md) | Annual wash, snow and ice, seasonal tilt and the forecast field, inspection checklist |
+| [Maintenance calendar](cheatsheet-maintenance-calendar.md) | Month-by-month schedule tying together the array, battery and generator tasks, with the spring and autumn changeovers |
 
 ## Site-specific notes (not for distribution)
 
