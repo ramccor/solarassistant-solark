@@ -1,6 +1,9 @@
 # Playwright MCP scratch output
 .playwright-mcp/
 
+# Session working files, not part of the distributable guide
+PROMPT.restart
+
 # OS / editor cruft
 .DS_Store
 *.swp

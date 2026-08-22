@@ -769,6 +769,8 @@ Compare predicted vs actual over two or three clear-sky days:
 
 </div>
 
+**Seasonally adjusted racking:** if the tilt changes twice a year, **update this field each time** — the forecast has no seasonal model. Typical schedule: latitude −15–20° in summer, +15–20° in winter; worth ~4–5 %/yr, mostly in the winter months. Four adjustments add <1 % more.
+
 ---
 
 ## Leave these alone

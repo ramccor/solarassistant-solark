@@ -172,6 +172,17 @@ identifies the field:
 > power if the split is uneven. No single pair can describe such an array, so accept
 > that the curve shape will never be exact.
 
+> **Seasonally adjusted racking.** If the array is tilted twice a year, the stored tilt
+> must change with it — the forecast has no seasonal model and will be wrong for half the
+> year otherwise. For a mid-latitude site (roughly 30–40° N) the usual schedule is
+> **latitude − 15° to −20° from spring to early autumn** and **latitude + 15° to +20°
+> for the rest of the year**; PVGIS modelling puts the annual gain at around **4–5 %**
+> over a fixed latitude tilt, concentrated in the winter months that drive generator
+> runtime on an off-grid site. Four adjustments a year add well under 1 % more and are
+> rarely worth the labour. Bifacial modules on an open ground mount gain a little extra
+> from the steeper winter angle. Put the two tilt values and switch dates on the site
+> record so whoever adjusts the racking also updates this field.
+
 > **Risk: none.** These inputs feed prediction only. They do not affect MPPT behaviour,
 > charge control, or anything the inverters or BMS act on.
 

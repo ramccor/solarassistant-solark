@@ -24,6 +24,24 @@ enclosure — read [00-overview](00-overview.md) first.
 | 08 | [Recommended settings](08-recommended-settings.md) | Optional post-install changes: MQTT/Home Assistant, battery capacity fallback, PV forecast |
 | 09 | [Sol-Ark ↔ SolarAssistant terminology](09-terminology-mapping.md) | What each MySolArk field is called in SolarAssistant, and where the two disagree |
 
+## Standalone cheat sheets
+
+Not part of the page sequence or the decks; print and keep near the inverters.
+
+| Sheet | What it covers |
+|-------|----------------|
+| [Parallel inverter failure](cheatsheet-inverter-failure.md) | Slave failure and master failure on a Sol-Ark 15K-2P parallel system — fault codes, isolation, promoting a slave, power-cycle order |
+| [Generator charging](cheatsheet-generator.md) | Auto-start rules, the 95 % cutoff, forcing a run, overload troubleshooting, portable-generator procedure |
+| [Low battery and recovery](cheatsheet-low-battery.md) | Sol-Ark Shutdown vs BMS cutoff, what to do at yellow and red, waking a sleeping pack, setpoints to verify |
+| [Array maintenance](cheatsheet-array-maintenance.md) | Annual wash, snow and ice, seasonal tilt and the forecast field, inspection checklist |
+
+## Site-specific notes (not for distribution)
+
+[site-pnc-home.md](site-pnc-home.md) holds the as-built values, datasheet figures, applied
+SolarAssistant settings and the PVGIS tilt analysis for one particular site. It contains
+that site's coordinates and hostname, is not part of the guide proper, and is not
+referenced from either slide deck. Leave it out when handing the guide to an installer.
+
 ## Presentation deck
 
 There are two [Marp](https://marp.app) decks, both 49 slides, for briefing an installer on
