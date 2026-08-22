@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Render cheatsheet-*.md to US-letter PDFs via headless Chrome.
+"""Render the runbook pages (cheatsheet-*.md) to one US-letter PDF, RUNBOOK.pdf.
 
-    python3 build-cheatsheets.py            # all sheets
-    python3 build-cheatsheets.py generator  # one sheet
+    python3 build-cheatsheets.py               # build RUNBOOK.pdf
+    python3 build-cheatsheets.py --keep        # also leave the per-page PDFs in build/
 
-Requires python-markdown and Google Chrome. Output: cheatsheet-<name>.pdf
+Pages are rendered individually with headless Chrome and merged with pdfunite (poppler)
+in the order of ORDER below. Requires python-markdown, Google Chrome, poppler-utils.
 """
 import glob, os, re, subprocess, sys, tempfile
 import markdown
@@ -75,9 +76,19 @@ def size_images(html):
         html = pat.sub(r'<div class="imgrow">\1\2</div>', html)
     return html
 
-def build(md_path):
+ORDER = [
+    "cheatsheet-00-runbook-index.md",
+    "cheatsheet-low-battery.md",
+    "cheatsheet-generator.md",
+    "cheatsheet-inverter-failure.md",
+    "cheatsheet-array-maintenance.md",
+    "cheatsheet-maintenance-calendar.md",
+    "cheatsheet-99-technician-appendix.md",
+]
+
+def build(md_path, out_dir, extra_md=""):
     name = os.path.basename(md_path)[:-3]
-    text = open(md_path, encoding="utf-8").read()
+    text = open(md_path, encoding="utf-8").read() + extra_md
     text = re.sub(r"^(\s*)- \[ \] ", r"\1- &#9744;&nbsp; ", text, flags=re.M)
     body = markdown.markdown(text, extensions=["tables", "sane_lists"])
     body = size_images(body)
@@ -85,19 +96,55 @@ def build(md_path):
     html = f'<!doctype html><html><head><meta charset="utf-8"><title>{name}</title><style>{CSS}</style></head><body>{body}</body></html>'
     html_path = os.path.join(os.getcwd(), f".{name}.print.html")
     open(html_path, "w", encoding="utf-8").write(html)
-    pdf_path = os.path.join(os.getcwd(), f"{name}.pdf")
+    pdf_path = os.path.join(out_dir, f"{name}.pdf")
     subprocess.run(["google-chrome", "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
                     f"--print-to-pdf={pdf_path}", "file://" + html_path],
                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     os.remove(html_path)
     pages = subprocess.run(["pdfinfo", pdf_path], capture_output=True, text=True).stdout
     n = re.search(r"Pages:\s+(\d+)", pages).group(1)
-    print(f"{pdf_path}: {n} pages")
+    print(f"  {name}: {n} pages")
+    return pdf_path, int(n)
 
 if __name__ == "__main__":
-    sel = sys.argv[1:]
-    files = sorted(glob.glob("cheatsheet-*.md"))
-    if sel:
-        files = [f for f in files if any(s in f for s in sel)]
-    for f in files:
-        build(f)
+    keep = "--keep" in sys.argv
+    out_dir = os.path.join(os.getcwd(), "build")
+    os.makedirs(out_dir, exist_ok=True)
+    missing = [f for f in ORDER if not os.path.exists(f)]
+    extra = sorted(set(glob.glob("cheatsheet-*.md")) - set(ORDER))
+    if missing or extra:
+        sys.exit(f"ORDER out of date. missing={missing} not-listed={extra}")
+    index_md, others = ORDER[0], ORDER[1:]
+    built = [build(f, out_dir) for f in others]
+    # Contents table with page ranges, appended to the index page (which is rendered last
+    # so it can know everyone else's page counts; it is assumed to stay 2 pages).
+    INDEX_PAGES = 2
+    rows, start = [], INDEX_PAGES + 1
+    titles = {
+        "cheatsheet-low-battery": "Batteries",
+        "cheatsheet-generator": "Generator",
+        "cheatsheet-inverter-failure": "Inverter failed",
+        "cheatsheet-array-maintenance": "Solar panels",
+        "cheatsheet-maintenance-calendar": "Maintenance calendar",
+        "cheatsheet-99-technician-appendix": "Technician appendix",
+    }
+    for f, (pdf, n) in zip(others, built):
+        key = os.path.basename(f)[:-3]
+        rows.append(f"| {titles.get(key, key)} | {start}–{start + n - 1} |")
+        start += n
+    contents = ("\n\n## Contents of this PDF\n\nEach section starts on a new page. To print one section, "
+                "print just its page range.\n\n| Section | Pages |\n|---|---|\n"
+                f"| Start here (this section) | 1–{INDEX_PAGES} |\n" + "\n".join(rows) + "\n")
+    index_pdf, index_n = build(index_md, out_dir, contents)
+    if index_n != INDEX_PAGES:
+        sys.exit(f"index rendered to {index_n} pages; update INDEX_PAGES in the script")
+    parts = [index_pdf] + [pdf for pdf, _ in built]
+    final = os.path.join(os.getcwd(), "RUNBOOK.pdf")
+    subprocess.run(["pdfunite", *parts, final], check=True)
+    pages = subprocess.run(["pdfinfo", final], capture_output=True, text=True).stdout
+    total = re.search(r"Pages:\s+(\d+)", pages).group(1)
+    print(f"RUNBOOK.pdf: {total} pages")
+    if not keep:
+        for p in parts:
+            os.remove(p)
+        os.rmdir(out_dir)

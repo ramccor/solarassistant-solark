@@ -9,3 +9,7 @@ PROMPT.restart
 *.swp
 *~
 .*.print.html
+
+# Per-page PDFs are intermediate; only RUNBOOK.pdf is kept
+cheatsheet-*.pdf
+build/

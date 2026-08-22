@@ -30,9 +30,15 @@ Not part of the page sequence or the decks. Written for someone with no electric
 background: each page opens with the hard safety rules, a "what you see → what to do"
 table, and numbered procedures with "if not →" branches; technician detail is split out into
 a separate appendix, with a pointer at the end of each page. Lights and buttons are named by printed label
-and behaviour, never by color alone. Each page has a US-letter PDF alongside it
-(`cheatsheet-<name>.pdf`), built with `python3 build-cheatsheets.py` (python-markdown +
-headless Chrome). Figures clipped from the source manuals live in `images/cheat-*.png`.
+and behaviour, never by color alone.
+
+The printable version is **[`RUNBOOK.pdf`](RUNBOOK.pdf)** — all seven pages merged in
+order, US letter, with a contents table of page ranges on page 2 so a single section can
+be printed on its own. It is generated, never hand-edited: after changing any
+`cheatsheet-*.md`, run `python3 build-cheatsheets.py` (python-markdown, Google Chrome,
+poppler-utils) and commit both. `--keep` leaves the per-section PDFs in `build/` if you
+want them locally; they are not tracked. Figures clipped from the source manuals live in
+`images/cheat-*.png`.
 
 | Page | What it covers |
 |------|----------------|
